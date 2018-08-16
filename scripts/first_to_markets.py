@@ -9,6 +9,8 @@ first_to_stats = {
     'first_turret': { 'stat': 'ft', 'unit': 1.0, 'data_dir': 'odds/first_turret' }
 }
 
+evs_by_bookie = {}
+
 for key in first_to_stats:
     csvs = os.listdir("odds/" + key)
 
@@ -21,7 +23,7 @@ for key in first_to_stats:
             ft_chances = {}
             for team in teams:
                 ft_percent = get_first_chance(stat=current_market['stat'], unit=current_market['unit'], team=team, df=df)
-                print(key + ' status for', team + ':', ft_percent)
+                # print(key + ' status for', team + ':', ft_percent)
                 ft_chances[team] = ft_percent
 
             team_0, team_1 = teams[0], teams[1]
@@ -30,5 +32,7 @@ for key in first_to_stats:
             relative_odds[team_0] = (ft_chances[team_0] + (100 - ft_chances[team_1])) / 200
             relative_odds[team_1] = (ft_chances[team_1] + (100 - ft_chances[team_0])) / 200
 
-            fetch_and_display_odds(relative_odds, bookie_odds, csv.split(".")[0])
+            evs_by_bookie = fetch_and_display_odds(relative_odds, bookie_odds, csv.split(".")[0], key, evs_by_bookie)
+
+print(evs_by_bookie)
 
