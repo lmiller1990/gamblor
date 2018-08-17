@@ -2,6 +2,6 @@ date,time,bookie,market,team_1,team_2,to_win,ev,amount_bet,did_bet,did_win,net_p
 2018-08-19,0700,bet365,first_turret,echo fox,team liquid,1.246,XXX,XXX,XXX,XXX
 2018-08-19,0700,bet365,first_baron,echo fox,team liquid,1.168,XXX,XXX,XXX,XXX
 2018-08-19,0800,bet365,first_turret,100 thieves,cloud9,1.156,XXX,XXX,XXX,XXX
-2018-08-19,0900,bet365,first_blood,counter logic gaming,clutch gaming,1.306,XXX,XXX,XXX,XXX
+2018-08-19,0900,bet365,first_blood,counter logic gaming,clutch gaming,clutch_gaming,1.306,XXX,XXX,XXX,XXX
 2018-08-19,1000,bet365,first_baron,golden guardians,flyquest,1.106,XXX,XXX,XXX,XXX
 2018-08-19,1100,bet365,first_turret,optic gaming,team solomid,1.246,XXX,XXX,XXX,XXX

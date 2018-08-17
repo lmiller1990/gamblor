@@ -15,6 +15,7 @@ evs_by_bookie = {}
 
 for key in first_to_stats:
     csvs = os.listdir("odds/" + key)
+    print(csvs)
 
     for csv in csvs:
         current_market = first_to_stats[key]
