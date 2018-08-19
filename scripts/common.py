@@ -1,10 +1,33 @@
 def get_first_chance(stat, unit, team, df):
+    """
+    Get the chance of a 'first' occurrence, such as first blood, first dragon.
+
+    Arguments:
+
+    stat: the event, such as 'fb' for first blood, 'fd' for first dragon
+    unit: the unit the stat is. For example "1", 1.0, etc.
+    team: the team you are interested in, such as 'Echo Fox'
+    df:   the data frame containing the data
+
+    Returns: the percentage chance, as a percentage from 0 - 100.
+    """
+
     data = df[(df['team'] == team) & (df['player'] == 'Team')]
     got_first = data[data[stat] == unit]
 
     return (got_first.shape[0] / data.shape[0]) * 100
 
 def get_ev(percent_to_get, bookie_odds):
+    """
+    Get the expected value (EV) of a bet w.r.t the bookie odds
+
+    Arguments: 
+
+    percent_to_get: the percentage chance of the event, between 0 - 1
+    bookie_odds: the bookie odds.
+    
+    Returns: the expected value.
+    """
     return percent_to_get * bookie_odds
 
 def fetch_and_display_odds(teams, odds, bookie, market, evs_by_bookies):
