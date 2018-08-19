@@ -3,8 +3,13 @@ import pandas as pd
 def games_by_league(df, league="nalcs"):
     return df[df.league == league].drop_duplicates(subset=['gameid', 'team'])
 
-def teams_by_league(df, league="nalcs"):
-    return df[df.league == league].drop_duplicates(subset=['team'])['team'].values
+def teams_by_league(df, league="nalcs", as_df=False):
+    data = df[df.league == league].drop_duplicates(subset=['team'])['team']
+
+    if as_df:
+        return data
+    else:
+        return data.values
 
 def team_games(df, team):
     """
@@ -28,6 +33,6 @@ def load_data(path, csv):
 def load_and_clean_data():
     df = pd.read_csv("data.csv")
 
-    df.team = df.team.str.lower()
+    df.team =df.team.str.lower()
     df.league = df.league.str.lower()
     return df.replace({ "1": 1.0, "0": 0.0, 1: 1.0, 0: 0.0 })

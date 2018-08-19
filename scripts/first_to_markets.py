@@ -2,23 +2,24 @@ import sys
 import os
 import pandas as pd
 from common import get_first_chance, fetch_and_display_odds
-from data_utils import load_data
+from data_utils import load_data, load_and_clean_data
 
-first_to_stats = { 
-    #'first_blood': { 'stat': 'fb', 'unit': '1', 'data_dir': 'odds/first_blood' },
+firs._to_stats = { 
+    'first_blood': { 'stat': 'fb', 'unit': 1.0, 'data_dir': 'odds/first_blood' },
     #'first_turret': { 'stat': 'ft', 'unit': 1.0, 'data_dir': 'odds/first_turret' },
-    #'first_dragon': { 'stat': 'fd', 'unit': "1", 'data_dir': 'odds/first_dragon' },
-    'first_baron': { 'stat': 'fbaron', 'unit': 1.0, 'data_dir': 'odds/first_baron' }
+    #'first_dragon': { 'stat': 'fd', 'unit': 1.0, 'data_dir': 'odds/first_dragon' },
+    #'first_baron': { 'stat': 'fbaron', 'unit': 1.0, 'data_dir': 'odds/first_baron' }
 }
 
 evs_by_bookie = {}
 
+df = load_and_clean_data()
 for key in first_to_stats:
     csvs = os.listdir("odds/" + key)
 
     for csv in csvs:
         current_market = first_to_stats[key]
-        df, bookie_odds = load_data(current_market['data_dir'], csv)
+        _, bookie_odds = load_data(current_market['data_dir'], csv)
         for i in range(bookie_odds.shape[0]):
             print("=====================")
             teams = [ bookie_odds.iloc[i]['team_1'], bookie_odds.iloc[i]['team_2'] ]

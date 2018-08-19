@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scripts.data_utils import team_games
+from data_utils import team_games
 
 def running_victories(df, teams):
     """
@@ -22,4 +22,6 @@ def running_victories(df, teams):
         team_name = team_df.iloc[0].team
         plt.plot(np.arange(1, team_df.shape[0]+1), running_wins, label=team_name)
         plt.legend()
+
+    return plt
 

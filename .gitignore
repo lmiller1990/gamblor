@@ -2,4 +2,4 @@
 *.ipynb
 data.csv
 scripts/__pycache__
-
+odds/

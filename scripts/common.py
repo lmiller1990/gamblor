@@ -12,7 +12,8 @@ def get_first_chance(stat, unit, team, df):
     Returns: the percentage chance, as a percentage from 0 - 100.
     """
 
-    data = df[(df['team'] == team) & (df['player'] == 'Team')]
+    data = df[(df.team == team) & (df.player == 'Team')]
+     
     got_first = data[data[stat] == unit]
 
     return (got_first.shape[0] / data.shape[0]) * 100
@@ -29,6 +30,22 @@ def get_ev(percent_to_get, bookie_odds):
     Returns: the expected value.
     """
     return percent_to_get * bookie_odds
+
+def relative_odds(t1_percent, t2_percent):
+    """
+    Get the relative odds of two percentages.
+
+    Arguments:
+        t1_percent: percentage (between 0-1)
+        t2_percent: percentage (between 0-1)
+
+    Returns
+        [t1_relative, t2_relative]: straight average between the two percentages.
+    """
+    return [
+            (t1_percent + (1 - t2_percent)) / 2,
+            (t2_percent + (1 - t1_percent)) / 2
+            ]
 
 def fetch_and_display_odds(teams, odds, bookie, market, evs_by_bookies):
     t1, t2 = list(teams.keys())
