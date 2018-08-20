@@ -68,5 +68,5 @@ if 'first' in program_to_run:
     market = sys.argv[1].split('-')[1]
     t1_win_chance = get_first_chance(market, 1.0, teams[0], df)/100
     t2_win_chance = get_first_chance(market, 1.0, teams[1], df)/100
+    print(t1_win_chance, t2_win_chance)
     print(relative_odds(t1_win_chance, t2_win_chance))
-
