@@ -1,0 +1,11 @@
+{
+  "name": "gamblor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lmiller1990/gamblor.git",
+  "author": "lmiller1990 <lachlan.miller.1990@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.7.0"
+  }
+}

@@ -1,5 +1,7 @@
 .ipynb_checkpoints/
 *.ipynb
+node_modules/
 data.csv
 scripts/__pycache__
 odds/
+tmp/
