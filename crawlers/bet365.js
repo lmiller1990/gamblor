@@ -2,7 +2,14 @@ const puppeteer = require("puppeteer")
 const fs = require("fs")
 
 
-const markets = ['Team to Draw First Blood']
+const markets = [
+  'team to draw first blood',
+  //  'team to draw first blood - map 1',
+  // 'team to draw first blood - map 2',
+  // 'team to draw first blood - map 3',
+  'team to destroy the first tower',
+  'team to slay the first dragon',
+]
 
 async function getPic() {
   const args = [
@@ -22,10 +29,12 @@ async function getPic() {
     ignoreHTTPSErrors: true,
     userDataDir: './tmp'
   };
+  try {
+    fs.unlinkSync("results.txt")
+  } catch(e) {
+    fs.writeFileSync("results.txt")
+  }
   const browser = await puppeteer.launch(options)
-  // await page.setViewport({width: 1000, height: 500})
-
-  // const preloadFile = fs.readFileSync('./crawlers/preload.js', 'utf8');
 
   const page = await browser.newPage()
 
@@ -33,7 +42,11 @@ async function getPic() {
     page.evaluateOnNewDocument(`
       Object.defineProperty(window, 'markets', {
         get() {
-          return ['Team to Draw First Blood']
+          return [
+            'team to draw first blood',
+            'team to destroy the first tower',
+            'team to slay the first dragon',
+          ]
         }
       })
     `)
@@ -59,45 +72,65 @@ async function getPic() {
     }
   })
 
-  await page.waitForSelector(".sm-MarketGroup_HeaderOpen ")
-
-  await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
-    for (let div of divs) {
-      if (div.innerText.includes("LOL")) {
-        const table = div.parentElement.parentElement
-        table.querySelectorAll(".sm-CouponLink_Label ").forEach(x => {
-          if (x.innerText.includes(markets[0])) {
-            //console.log(x.innerText, "includes", markets[0])
-            //console.log('clicking', x)
-            x.click()
+  const marketOdds = {}
+  for (let market of markets) {
+    await page.evaluate(`
+      if (typeof market !== 'undefined') {
+        Object.defineProperty(window, 'market', {
+          get() {
+            return '${market}'
           }
-        })
+        }) 
+      } else {
+        market = '${market}'
       }
+    `)
+    await page.waitForSelector(".sm-MarketGroup_HeaderOpen ")
+
+    await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
+      console.log("Getting odds for " + market)
+      for (let div of divs) {
+        if (div.innerText.includes("LOL")) {
+          const table = div.parentElement.parentElement
+          table.querySelectorAll(".sm-CouponLink_Label ").forEach(x => {
+            if (x.innerText.toLowerCase().includes(market)) {
+              x.click()
+            }
+          })
+        }
+      }
+    })
+
+    await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
+
+    const [ theMarket, theResults ] = await page.$eval(".gl-MarketGroupContainer ", (el) => {
+      const groups = el.querySelectorAll(".cm-MarketSubGroup ")
+      const results = []
+      for (let g of groups) {
+        const matchup = g.querySelector(".cm-MarketSubGroup_Label").innerText
+        const teamsAndOdds = 
+          matchup.substr(0, matchup.indexOf("-"))
+          .split("vs")
+          .map(x => x.trim())
+          .map(x => x.toLowerCase())
+
+        const odds = g.nextElementSibling.querySelectorAll(".gl-Participant_Odds")
+        odds.forEach(odd => teamsAndOdds.push(odd.innerText))
+        results.push(teamsAndOdds)
+      }
+      return [ market, results ]
+    })
+
+    fs.appendFileSync("results.txt", theMarket + "\n")
+    for (let data of theResults) {
+      fs.appendFileSync("results.txt", data.join(",").toString() + "\n")
     }
-  })
 
-  await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
-
-  await page.$eval(".gl-MarketGroupContainer ", (el) => {
-    const groups = el.querySelectorAll(".cm-MarketSubGroup ")
-    for (let g of groups) {
-      console.log(g)
-      const matchup = g.querySelector(".cm-MarketSubGroup_Label").innerText
-      const teams = 
-        matchup.substr(0, matchup.indexOf("-"))
-        .split("vs")
-        .map(x => x.trim())
-        .map(x => x.toLowerCase())
-
-      const odds = g.nextElementSibling.querySelectorAll(".gl-Participant_Odds")
-      odds.forEach(odd => teams.push(odd.innerText))
-      console.log(teams)
-    }
-  })
-
+    await page.goBack()
+  }
 
   await page.waitForSelector(".sm-MarketGroup_HeaderOpen")
-  // await browser.close()
+  await browser.close()
 }
 
 getPic()
