@@ -1,5 +1,6 @@
-const puppeteer = require("puppeteer")
 const fs = require("fs")
+const puppeteer = require("puppeteer")
+const { options } = require("./launch-options")
 
 
 const markets = [
@@ -11,33 +12,34 @@ const markets = [
   'team to slay the first dragon',
 ]
 
-async function getPic() {
-  const args = [
-    '--no-sandbox',
-    '--disable-setuid-sandbox',
-    '--disable-infobars',
-    '--window-position=0,0',
-    '--ignore-certifcate-errors',
-    '--ignore-certifcate-errors-spki-list',
-    '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3312.0 Safari/532.36"',
-    '--auto-open-devtools-for-tabs'
-  ];
+function attachMarketToWindow(page, market) {
+  return page.evaluate(`
+      if (typeof market !== 'undefined') {
+        Object.defineProperty(window, 'market', {
+          get() {
+            return '${market}'
+          }
+        }) 
+      } else {
+        market = '${market}'
+      }
+    `)
+}
 
-  const options = {
-    args,
-    headless: false,
-    ignoreHTTPSErrors: true,
-    userDataDir: './tmp'
-  };
+function clearPreviouslyScrapedData() {
   try {
     fs.unlinkSync("results.txt")
   } catch(e) {
     fs.writeFileSync("results.txt")
   }
-  const browser = await puppeteer.launch(options)
+}
 
+async function getPic() {
+  clearPreviouslyScrapedData()
+  const browser = await puppeteer.launch(options)
   const page = await browser.newPage()
 
+    /* TODO: delete?
   const windowSet = (page, name, value) => {
     page.evaluateOnNewDocument(`
       Object.defineProperty(window, 'markets', {
@@ -51,20 +53,14 @@ async function getPic() {
       })
     `)
   }
-  await windowSet(page) // , 'markets', ['Team to Draw First Blood'])
+  await windowSet(page)*/
 
-  // await page.evaluateOnNewDocument(preloadFile);
   await page.goto("https://www.bet365.com.au/")
-
-  // await page.click("a#TopPromotionBetNow")
   await page.waitForSelector(".wc-HomePageHeader")
   await page.waitForSelector(".wn-Classification ")
-  // await page.$x("//a[contains(text(), 'Esports')]")
+  await page.mainFrame().waitForSelector(".wn-Classification ")
 
-  await page.mainFrame()
-    .waitForSelector('.wn-Classification ')
-
-  const divsCounts = await page.$$eval('.wn-Classification ', (divs) => {
+  const divsCounts = await page.$$eval(".wn-Classification ", (divs) => {
     for (let div of divs) {
       if (div.innerText.includes("Esports")) {
         div.click()
@@ -73,22 +69,24 @@ async function getPic() {
   })
 
   const marketOdds = {}
+
   for (let market of markets) {
-    await page.evaluate(`
-      if (typeof market !== 'undefined') {
-        Object.defineProperty(window, 'market', {
-          get() {
-            return '${market}'
-          }
-        }) 
-      } else {
-        market = '${market}'
-      }
-    `)
+    await attachMarketToWindow(page, market)
     await page.waitForSelector(".sm-MarketGroup_HeaderOpen ")
 
     await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
       console.log("Getting odds for " + market)
+      // TODO: loop each league
+      // league -> market -> back -> another league
+      // makes more sense to put all markets in a single place 
+      leagues = []
+        /*
+      for (let div of divs) {
+        if (div.innerText.includes("LOL")) {
+          leagues.push(div)
+        }
+      }*/
+      console.log("leagues", leagues)
       for (let div of divs) {
         if (div.innerText.includes("LOL")) {
           const table = div.parentElement.parentElement
