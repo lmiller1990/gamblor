@@ -12,9 +12,49 @@ const markets = [
   'team to slay the first dragon',
 ]
 
+function getTeamNamesAndOddsFromContainer(marketGroupContainer) {
+  const results = []
+  const groups = marketGroupContainer.querySelectorAll(".cm-MarketSubGroup ")
+  for (let group of groups) {
+    const matchup = group.querySelector(".cm-MarketSubGroup_Label").innerText
+    const teamsAndOdds = 
+      matchup.substr(0, matchup.indexOf("-"))
+      .split("vs")
+      .map(x => x.trim())
+      .map(x => x.toLowerCase())
+
+    const odds = group.nextElementSibling.querySelectorAll(".gl-Participant_Odds")
+    odds.forEach(odd => teamsAndOdds.push(odd.innerText))
+    results.push(teamsAndOdds)
+  }
+
+  return results
+}
+
+function clickMarket(market, table) {
+  table.querySelectorAll(".sm-CouponLink_Label ").forEach(x => {
+    if (x.innerText.toLowerCase().includes(market)) {
+      x.click()
+    }
+  })
+}
+
+function attachToWindow(page, propName, propVal) {
+  return page.evaluate(`
+      if (typeof ${propName} === 'undefined') {
+        Object.defineProperty(window, '${propName}', {
+          get() { return ${propVal} }
+        })
+      } else if (typeof ${propName} === 'string') {
+        ${propName} = ${propVal}
+      } else {
+      }
+    `)
+}
+
 function attachMarketToWindow(page, market) {
   return page.evaluate(`
-      if (typeof market !== 'undefined') {
+      if (typeof market === 'undefined') {
         Object.defineProperty(window, 'market', {
           get() {
             return '${market}'
@@ -72,50 +112,43 @@ async function getPic() {
 
   for (let market of markets) {
     await attachMarketToWindow(page, market)
+    await attachToWindow(page, 'clickMarket', clickMarket)
     await page.waitForSelector(".sm-MarketGroup_HeaderOpen ")
 
-    await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
+    const leagues = await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
       console.log("Getting odds for " + market)
       // TODO: loop each league
       // league -> market -> back -> another league
       // makes more sense to put all markets in a single place 
+      // or does it??
       leagues = []
-        /*
+      let id = 0
       for (let div of divs) {
         if (div.innerText.includes("LOL")) {
-          leagues.push(div)
-        }
-      }*/
-      console.log("leagues", leagues)
-      for (let div of divs) {
-        if (div.innerText.includes("LOL")) {
-          const table = div.parentElement.parentElement
-          table.querySelectorAll(".sm-CouponLink_Label ").forEach(x => {
-            if (x.innerText.toLowerCase().includes(market)) {
-              x.click()
-            }
-          })
+          id+=1
+          div.parentElement.parentElement.setAttribute("id", "league-" + id)
+          leagues.push("league-" + id)
         }
       }
+
+      return leagues
     })
+    console.log(leagues)
+
+    for (let id of [leagues[0]]) {
+      const theId = "#" + id
+      await page.$eval(theId, (table) => {
+        // const table = // theLeague.parentElement.parentElement
+        clickMarket(market, table)
+      })
+    }
 
     await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
+    await attachToWindow(page, 'getTeamNamesAndOddsFromContainer', getTeamNamesAndOddsFromContainer)
 
-    const [ theMarket, theResults ] = await page.$eval(".gl-MarketGroupContainer ", (el) => {
-      const groups = el.querySelectorAll(".cm-MarketSubGroup ")
-      const results = []
-      for (let g of groups) {
-        const matchup = g.querySelector(".cm-MarketSubGroup_Label").innerText
-        const teamsAndOdds = 
-          matchup.substr(0, matchup.indexOf("-"))
-          .split("vs")
-          .map(x => x.trim())
-          .map(x => x.toLowerCase())
+    const [ theMarket, theResults ] = await page.$eval(".gl-MarketGroupContainer ", (marketGroupContainer) => {
+      const results = getTeamNamesAndOddsFromContainer(marketGroupContainer)
 
-        const odds = g.nextElementSibling.querySelectorAll(".gl-Participant_Odds")
-        odds.forEach(odd => teamsAndOdds.push(odd.innerText))
-        results.push(teamsAndOdds)
-      }
       return [ market, results ]
     })
 
