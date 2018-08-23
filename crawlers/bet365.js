@@ -3,6 +3,11 @@ const puppeteer = require("puppeteer")
 const { options } = require("./launch-options")
 
 
+const leaguesToScape = [
+  "NA LCS",
+  "EU LCS"
+]
+
 const markets = [
   'team to draw first blood',
   //  'team to draw first blood - map 1',
@@ -79,22 +84,6 @@ async function getPic() {
   const browser = await puppeteer.launch(options)
   const page = await browser.newPage()
 
-    /* TODO: delete?
-  const windowSet = (page, name, value) => {
-    page.evaluateOnNewDocument(`
-      Object.defineProperty(window, 'markets', {
-        get() {
-          return [
-            'team to draw first blood',
-            'team to destroy the first tower',
-            'team to slay the first dragon',
-          ]
-        }
-      })
-    `)
-  }
-  await windowSet(page)*/
-
   await page.goto("https://www.bet365.com.au/")
   await page.waitForSelector(".wc-HomePageHeader")
   await page.waitForSelector(".wn-Classification ")
@@ -113,6 +102,7 @@ async function getPic() {
   for (let market of markets) {
     await attachMarketToWindow(page, market)
     await attachToWindow(page, 'clickMarket', clickMarket)
+    await attachToWindow(page, 'leaguesToScape', JSON.stringify(leaguesToScape))
     await page.waitForSelector(".sm-MarketGroup_HeaderOpen ")
 
     const leagues = await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
@@ -124,8 +114,8 @@ async function getPic() {
       leagues = []
       let id = 0
       for (let div of divs) {
-        if (div.innerText.includes("LOL")) {
-          id+=1
+        if (leaguesToScape.some(x => div.innerText.includes(x))) {
+          id += 1
           div.parentElement.parentElement.setAttribute("id", "league-" + id)
           leagues.push("league-" + id)
         }
@@ -133,7 +123,6 @@ async function getPic() {
 
       return leagues
     })
-    console.log(leagues)
 
     for (let id of [leagues[0]]) {
       const theId = "#" + id
