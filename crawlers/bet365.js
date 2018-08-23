@@ -66,7 +66,7 @@ function attachMarketToWindow(page, market) {
           }
         }) 
       } else {
-        market = '${market}'
+        window.market = '${market}'
       }
     `)
 }
@@ -150,7 +150,7 @@ async function getPic() {
   }
 
   await page.waitForSelector(".sm-MarketGroup_HeaderOpen")
-  await browser.close()
+  //await browser.close()
 }
 
 getPic()
