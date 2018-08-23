@@ -16,7 +16,7 @@ def load_and_clean_data():
 
     df.team = df.team.str.lower()
     df.league = df.league.str.lower()
-    return df.replace({ "1": 1.0, "0": 0.0, 1: 1.0, 0: 0.0, 'Blue': 0.0, 'Red': 1.0 })
+    return df.replace({ "1": 1.0, "0": 0.0, 1: 1.0, 0: 0.0, 'Blue': -1, 'Red': 1.0 })
 ```
 
 Some of the 0 and 1 values, for example first blood, are saved as strings instead of numbers. I convert them all to floats, and also set `blue` and `red` to be integer values.
@@ -104,7 +104,7 @@ week  game         team              opponent  side  result  teamkills  teamdeat
 
 Now we have gotten a feel for the data, let's do some actual analysis.
 
-## First Blood/Turret/Dragon...
+## Stats about First Blood/Turret/Dragon...
 
 Often a strong early game dictates the result - or does it? Let's investigate. We can grab the percentage of first bloods/turrets easily, using our `team_games` function.
 
@@ -213,8 +213,84 @@ counter logic gaming  0.6875  0.4375  0.3125  0.3125   5.0
 golden guardians      0.5625  0.4375  0.6875  0.1250   5.0
 ```
 
-First baron is pretty consistent in the top 7. All of them are within three games of each other, but I did expect a bit or a larger gap. First dragon, turret and blood appears completely non correlated though (we will see this is indeed not highly correlated later on, using pandas `corr` method). Golden Guardians is a bit of an outliner - a lot of first dragons, second only to Team Liquid. This could be for a number of reasons, such as the type of dragon, or some teams favoring early game junglers, for example.
+First baron is pretty consistent in the top 7. All of them are within three games of each other, but I did expect a bit or a larger gap. First dragon, turret and blood appears completely non correlated though (we will see this is indeed not highly correlated later on, using pandas `corr` method). 
+
+Golden Guardians is a bit of an outliner - a lot of first dragons, second only to Team Liquid. This could be for a number of reasons, such as the type of dragon, or some teams favoring early game junglers, for example.
 
 ## Using `corr` to find correlation
 
-Let's see if there is a relationship between first dragon, turret, etc, and actually winning the game.
+Let's see if there is a relationship between first dragon, turret, etc, and actually winning the game. Create a `do_correlation` function:
+
+```python
+fields_to_correlate = 'side fb fd ft fbaron result'.split()
+
+def do_correlation(team):
+    games = team_games(df, team) # [fields_to_correlate]
+    games.replace(' ', np.nan, inplace=True) # replace empty values
+    corr = games[fields_to_correlate].corr()
+    print(corr.round(2))
+
+do_correlation('team liquid')
+```
+
+This gives us:
+
+```
+        side    fb    fd    ft  fbaron  result
+side    1.00 -0.10 -0.19 -0.35   -0.13   -0.32
+fb     -0.10  1.00  0.44  0.35   -0.02    0.08
+fd     -0.19  0.44  1.00  0.06   -0.22    0.09
+ft     -0.35  0.35  0.06  1.00    0.16    0.16
+fbaron -0.13 -0.02 -0.22  0.16    1.00    0.76
+result -0.32  0.08  0.09  0.16    0.76    1.00
+```
+
+Correlation goes from -1 to +1. -1 indicates an opposite relationship. For example if first blood has a correlation of 1 with result, that would mean a team wins every game they get first blood. 
+
+As expected, getting the first baron has a high correlation with winning the game, 0.76. First blood also has a high correlation with first dragon - maybe the team gets first blood botlane a lot, then transitions into dragon? 
+
+We defined blue side as 0, and red side as 1. Notice everything has a negative correlation with side. That means as side goes up, everything else goes down. In other words, red size is much worse, at least for Team Liquid. Let's see if this tendency extends to other teams.
+
+```python
+def correlation_in_league():
+    df.replace(' ', np.nan, inplace=True)
+    corr = df[fields_to_correlate].corr()
+    print(corr.round(2))
+
+correlation_in_league()
+```
+
+Gives us:
+
+```
+        side    fb    fd    ft  fbaron  result
+side    1.00 -0.02  0.04 -0.16   -0.09   -0.08
+fb     -0.02  1.00  0.27  0.10    0.07    0.11
+fd      0.04  0.27  1.00  0.10    0.10    0.11
+ft     -0.16  0.10  0.10  1.00    0.29    0.41
+fbaron -0.09  0.07  0.10  0.29    1.00    0.69
+result -0.08  0.11  0.11  0.41    0.69    1.00
+```
+
+First baron is still a solid indicator of who is going to win. First dragon and first turret, however, are largely unrelated - 0.11 is not very significant. However there is a strong relationship between first blood and first turret - perhaps NA teams have a tendency to play towards bot, often getting first blood (which leads to firrst turret)? How about compared to Korea's LCK, the strongest region?
+
+
+```
+        side    fb    fd    ft  fbaron  result
+side    1.00 -0.03  0.02 -0.19   -0.12   -0.08
+fb     -0.03  1.00  0.04  0.12   -0.01    0.01
+fd      0.02  0.04  1.00  0.11    0.11    0.11
+ft     -0.19  0.12  0.11  1.00    0.45    0.54
+fbaron -0.12 -0.01  0.11  0.45    1.00    0.73
+result -0.08  0.01  0.11  0.54    0.73    1.00
+```
+
+First turret and first baron both have higher correlations. Perhaps the LCK is better at pushing an advantage? First blood, again, has no obvious relationship to the result. Blue side is slight favoured, still.
+
+## Conclusion and Improvements
+
+Although machine learning libraries are the latest and greatest tools sweeping the data science community, you can draw some solid conclusions using a more simple library like pandas. I plan to do a follow up article using scikit to train some models to predict things like first blood, who wins a game, and so forth later. 
+
+Even if I intend to build a predictive model using a machine learning library, I usually pull in pandas and explore the data first, to get a good intuition for what I'm working with and what kind of model I want to train.
+
+Some areas to explore further is generating graphs, which pandas supports (using matplotlib under the hood) and doing some analysis regardling single players across multiple splits or even seasons. Perhaps TL's dominant bot lane followed Doublelift when he transferred from TSM? Pandas is the perfect tool for this kind of high level analysis.
