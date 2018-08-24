@@ -1,6 +1,6 @@
-const fs = require("fs")
-const puppeteer = require("puppeteer")
-const { options } = require("./launch-options")
+import * as fs from "fs"
+import * as puppeteer from "puppeteer"
+import { options } from "./launch-options"
 
 const theEvent = "NA LCS"
 const theMarket = "Team to Draw First Blood"
@@ -21,32 +21,34 @@ function attachToWindow(page, propName, propVal) {
  * @param {HTMLElement} 
  * Contains <span class="gl-Participant_Name">{teamNAme}</span>
  */  
-async function getTeams(el) {
+const getTeams = (function getTeams(el) {
   return Array.from(el.querySelectorAll(".gl-Participant_Name"))
-    .map(x => x.innerHTML)
-}
+    .map((x: HTMLElement) => x.innerHTML)
+})
 
 /**
  * @param {HTMLElement} 
  * Contains <span class="gl-Participant_Odds">{odds}</span>
  */  
-async function getOdds(el) {
+const getOdds = (el => {
   return Array.from(el.querySelectorAll(".gl-Participant_Odds"))
-    .map(x => x.innerHTML)
-}
+    .map((x: HTMLElement) => x.innerHTML)
+})
 
-async function visitEsportsPage(page) {
+const visitEsportsPage = (async page => {
   await page.goto("https://www.bet365.com.au/")
   await page.mainFrame().waitForSelector(".wn-Classification ")
 
   await page.$$eval(".wn-Classification ", divs => 
-    Array.from(divs)
-    .find(x => x.innerText.includes("Esports"))
+    (Array.from(divs)
+    .find((x: HTMLElement) => x.innerText.includes("Esports")) as HTMLElement)
     .click()
   )
-}
+})
 
-async function main() {
+const main = (async function main() {
+  
+  console.log("Executing")
   const browser = await puppeteer.launch(options)
   const page = await browser.newPage()
 
@@ -54,28 +56,34 @@ async function main() {
   await page.mainFrame().waitForSelector(".sm-MarketGroup_GroupName ")
 
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
-    const theLeague = Array.from(divs).find(x => x.innerText.toLowerCase().includes('na lcs'))
+    const theLeague: HTMLElement = Array.from(divs)
+      .find((x: HTMLElement) => x.innerText.toLowerCase().includes('na lcs')) as HTMLElement
     // the table containing all the markets
     //
-    const table = theLeague.parentElement.parentElement
-    Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
-      .find(x => x.innerText.toLowerCase().includes("draw first blood"))
+    const table: HTMLElement = theLeague.parentElement.parentElement
+    const market = (Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
+      .find((x: HTMLElement) => x.innerText.toLowerCase().includes("draw first blood")) as HTMLElement)
       .click()
+    
   })
 
   await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
+  console.log("Here")
   await attachToWindow(page, 'getTeams', getTeams)
   await attachToWindow(page, 'getOdds', getOdds)
-  await page.$eval(".gl-MarketGroup", async (marketGroup) => {
-      const tableRows = marketGroup.querySelectorAll(".gl-Market_General")
+  await page.$eval(".gl-MarketGroup", (marketGroup) => {
+      
+    const tableRows: Array<Element> = Array.from(marketGroup.querySelectorAll(".gl-Market_General"))
     for (const tableRow of tableRows) {
-      const teams = await getTeams(tableRow)
-      const odds = await getOdds(tableRow)
-      console.log(teams)
-      console.log(odds)
-
+      Promise.all([
+        getTeams(tableRow),
+        getOdds(tableRow)
+      ]).then(([ teams, odds ]) => {
+        console.log(teams)
+        console.log(odds)
+      })
     }
   })
-}
+})()
 
-main()
+// main()

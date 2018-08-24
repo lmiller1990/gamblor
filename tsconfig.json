@@ -1,0 +1,17 @@
+{
+  "include": [
+    "crawlers/better.ts"
+  ],
+  "compilerOptions": {
+    "importHelpers": true,
+    "target": "es5",
+    "noEmitHelpers": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "exclude": ["node_modules"]
+}
