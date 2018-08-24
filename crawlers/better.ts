@@ -1,6 +1,10 @@
 import * as fs from "fs"
 import { options } from "./launch-options"
-import * as puppeteer from "puppeteer";
+import * as puppeteer from "puppeteer"
+import * as path from "path"
+import * as minimist from "minimist" 
+
+const args = minimist(process.argv.slice(2))
 
 interface Match {
   firstTeamName: String
@@ -9,8 +13,10 @@ interface Match {
   secondTeamOdds: Number
 }
 
-const theEvent = "NA LCS"
-const theMarket = "Team to Draw First Blood"
+const theEvent = args.event
+const theMarket = args.market
+const outputFile = args.outputFile
+const outputDirectory = args.outputDirectory
 
 function attachToWindow(page, propName, propVal) {
   return page.evaluate(`
@@ -27,12 +33,17 @@ function attachToWindow(page, propName, propVal) {
 
 function clearPreviouslyScrapedData() {
   try {
-    fs.unlinkSync("results.txt")
+    fs.unlinkSync(
+      path.join(__dirname, "..", "odds", outputDirectory, outputFile)
+    )
   } catch(e) {
     // doesn't exist
   }
 
-  fs.appendFileSync("results.txt", "team_1,team_2,team_1_odds,team_2_odds")
+  fs.appendFileSync(
+    path.join(__dirname, "..", "odds", outputDirectory, outputFile), 
+    "team_1,team_2,team_1_odds,team_2_odds"
+  )
 }
 
 function getTeams(el: HTMLElement) {
@@ -61,19 +72,20 @@ const main = (async function main() {
   clearPreviouslyScrapedData()
   const browser: puppeteer.Browser = await puppeteer.launch(options)
   const page = await browser.newPage()
-
-
+ 
   await visitEsportsPage(page)
   await page.mainFrame().waitForSelector(".sm-MarketGroup_GroupName ")
+  await attachToWindow(page, 'theMarket', JSON.stringify(theMarket))
+  await attachToWindow(page, 'theEvent', JSON.stringify(theEvent))
 
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
     const theLeague: HTMLElement = Array.from(divs)
-      .find((x: HTMLElement) => x.innerText.toLowerCase().includes('na lcs')) as HTMLElement
+      .find((x: HTMLElement) => x.innerText.toLowerCase().includes(theEvent)) as HTMLElement
     // the table containing all the markets
     //
     const table: HTMLElement = theLeague.parentElement.parentElement
     const market = (Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
-      .find((x: HTMLElement) => x.innerText.toLowerCase().includes("draw first blood")) as HTMLElement)
+      .find((x: HTMLElement) => x.innerText.toLowerCase().includes(theMarket)) as HTMLElement)
       .click()
     
   })
@@ -107,7 +119,10 @@ const main = (async function main() {
   })
 
   for (const match of matches) {
-    fs.appendFileSync("results.txt", `\n${match.firstTeamName},${match.secondTeamName},${match.firstTeamOdds},${match.secondTeamOdds}`)
+    fs.appendFileSync(
+      path.join(__dirname, "..", "odds", outputDirectory, outputFile), 
+      `\n${match.firstTeamName},${match.secondTeamName},${match.firstTeamOdds},${match.secondTeamOdds}`
+    )
   }
   
   await browser.close()

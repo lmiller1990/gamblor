@@ -39,19 +39,24 @@ exports.__esModule = true;
 var fs = require("fs");
 var launch_options_1 = require("./launch-options");
 var puppeteer = require("puppeteer");
-var theEvent = "NA LCS";
-var theMarket = "Team to Draw First Blood";
+var path = require("path");
+var minimist = require("minimist");
+var args = minimist(process.argv.slice(2));
+var theEvent = args.event;
+var theMarket = args.market;
+var outputFile = args.outputFile;
+var outputDirectory = args.outputDirectory;
 function attachToWindow(page, propName, propVal) {
     return page.evaluate("\n      if (typeof " + propName + " === 'undefined') {\n        Object.defineProperty(window, '" + propName + "', {\n          get() { return " + propVal + " }\n        })\n      } else if (typeof " + propName + " === 'string') {\n        " + propName + " = " + propVal + "\n      } else {\n      }\n    ");
 }
 function clearPreviouslyScrapedData() {
     try {
-        fs.unlinkSync("results.txt");
+        fs.unlinkSync(path.join(__dirname, "..", "odds", outputDirectory, outputFile));
     }
     catch (e) {
         // doesn't exist
     }
-    fs.appendFileSync("results.txt", "team_1,team_2,team_1_odds,team_2_odds");
+    fs.appendFileSync(path.join(__dirname, "..", "odds", outputDirectory, outputFile), "team_1,team_2,team_1_odds,team_2_odds");
 }
 function getTeams(el) {
     return Array.from(el.querySelectorAll(".gl-Participant_Name"))
@@ -100,26 +105,32 @@ var main = (function main() {
                     return [4 /*yield*/, page.mainFrame().waitForSelector(".sm-MarketGroup_GroupName ")];
                 case 4:
                     _a.sent();
+                    return [4 /*yield*/, attachToWindow(page, 'theMarket', JSON.stringify(theMarket))];
+                case 5:
+                    _a.sent();
+                    return [4 /*yield*/, attachToWindow(page, 'theEvent', JSON.stringify(theEvent))];
+                case 6:
+                    _a.sent();
                     return [4 /*yield*/, page.$$eval(".sm-MarketGroup_GroupName ", function (divs) {
                             var theLeague = Array.from(divs)
-                                .find(function (x) { return x.innerText.toLowerCase().includes('na lcs'); });
+                                .find(function (x) { return x.innerText.toLowerCase().includes(theEvent); });
                             // the table containing all the markets
                             //
                             var table = theLeague.parentElement.parentElement;
                             var market = Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
-                                .find(function (x) { return x.innerText.toLowerCase().includes("draw first blood"); })
+                                .find(function (x) { return x.innerText.toLowerCase().includes(theMarket); })
                                 .click();
                         })];
-                case 5:
-                    _a.sent();
-                    return [4 /*yield*/, page.waitForSelector(".cm-CouponMarketGroupButton_Title")];
-                case 6:
-                    _a.sent();
-                    return [4 /*yield*/, attachToWindow(page, 'getTeams', getTeams)];
                 case 7:
                     _a.sent();
-                    return [4 /*yield*/, attachToWindow(page, 'getOdds', getOdds)];
+                    return [4 /*yield*/, page.waitForSelector(".cm-CouponMarketGroupButton_Title")];
                 case 8:
+                    _a.sent();
+                    return [4 /*yield*/, attachToWindow(page, 'getTeams', getTeams)];
+                case 9:
+                    _a.sent();
+                    return [4 /*yield*/, attachToWindow(page, 'getOdds', getOdds)];
+                case 10:
                     _a.sent();
                     return [4 /*yield*/, page.$eval(".gl-MarketGroup", function (marketGroup) {
                             var results = [];
@@ -142,14 +153,14 @@ var main = (function main() {
                             }
                             return results;
                         })];
-                case 9:
+                case 11:
                     matches = _a.sent();
                     for (_i = 0, matches_1 = matches; _i < matches_1.length; _i++) {
                         match = matches_1[_i];
-                        fs.appendFileSync("results.txt", "\n" + match.firstTeamName + "," + match.secondTeamName + "," + match.firstTeamOdds + "," + match.secondTeamOdds);
+                        fs.appendFileSync(path.join(__dirname, "..", "odds", outputDirectory, outputFile), "\n" + match.firstTeamName + "," + match.secondTeamName + "," + match.firstTeamOdds + "," + match.secondTeamOdds);
                     }
                     return [4 /*yield*/, browser.close()];
-                case 10:
+                case 12:
                     _a.sent();
                     return [2 /*return*/];
             }
