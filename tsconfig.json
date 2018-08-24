@@ -1,6 +1,7 @@
 {
   "include": [
-    "crawlers/better.ts"
+    "crawlers/better.ts",
+    "node_modules/@types/puppeteer/index.d.ts"
   ],
   "compilerOptions": {
     "importHelpers": true,

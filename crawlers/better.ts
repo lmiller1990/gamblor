@@ -1,6 +1,13 @@
 import * as fs from "fs"
-import * as puppeteer from "puppeteer"
 import { options } from "./launch-options"
+import * as puppeteer from "puppeteer";
+
+interface Match {
+  firstTeamName: String
+  secondTeamName: String
+  firstTeamOdds: Number
+  secondTeamOdds: Number
+}
 
 const theEvent = "NA LCS"
 const theMarket = "Team to Draw First Blood"
@@ -17,25 +24,28 @@ function attachToWindow(page, propName, propVal) {
       }
     `)
 }
-/**
- * @param {HTMLElement} 
- * Contains <span class="gl-Participant_Name">{teamNAme}</span>
- */  
-const getTeams = (function getTeams(el) {
+
+function clearPreviouslyScrapedData() {
+  try {
+    fs.unlinkSync("results.txt")
+  } catch(e) {
+    // doesn't exist
+  }
+
+  fs.appendFileSync("results.txt", "team_1,team_2,team_1_odds,team_2_odds")
+}
+
+function getTeams(el: HTMLElement) {
   return Array.from(el.querySelectorAll(".gl-Participant_Name"))
     .map((x: HTMLElement) => x.innerHTML)
-})
+}
 
-/**
- * @param {HTMLElement} 
- * Contains <span class="gl-Participant_Odds">{odds}</span>
- */  
-const getOdds = (el => {
+function getOdds(el: HTMLElement) {
   return Array.from(el.querySelectorAll(".gl-Participant_Odds"))
     .map((x: HTMLElement) => x.innerHTML)
-})
+}
 
-const visitEsportsPage = (async page => {
+const visitEsportsPage = (async (page: puppeteer.Page) => {
   await page.goto("https://www.bet365.com.au/")
   await page.mainFrame().waitForSelector(".wn-Classification ")
 
@@ -47,10 +57,11 @@ const visitEsportsPage = (async page => {
 })
 
 const main = (async function main() {
-  
-  console.log("Executing")
-  const browser = await puppeteer.launch(options)
+
+  clearPreviouslyScrapedData()
+  const browser: puppeteer.Browser = await puppeteer.launch(options)
   const page = await browser.newPage()
+
 
   await visitEsportsPage(page)
   await page.mainFrame().waitForSelector(".sm-MarketGroup_GroupName ")
@@ -68,22 +79,36 @@ const main = (async function main() {
   })
 
   await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
-  console.log("Here")
   await attachToWindow(page, 'getTeams', getTeams)
   await attachToWindow(page, 'getOdds', getOdds)
-  await page.$eval(".gl-MarketGroup", (marketGroup) => {
-      
+
+  const matches: Match[] = await page.$eval(".gl-MarketGroup", (marketGroup) => {
+    const results: Match[] = []
+
     const tableRows: Array<Element> = Array.from(marketGroup.querySelectorAll(".gl-Market_General"))
+
     for (const tableRow of tableRows) {
       Promise.all([
-        getTeams(tableRow),
-        getOdds(tableRow)
+        getTeams(tableRow as HTMLElement),
+        getOdds(tableRow as HTMLElement)
       ]).then(([ teams, odds ]) => {
-        console.log(teams)
-        console.log(odds)
+        const match: Match = {
+          firstTeamName: teams[0].toLowerCase(),
+          secondTeamName: teams[1].toLowerCase(),
+          firstTeamOdds: parseFloat(odds[0].toLowerCase()),
+          secondTeamOdds: parseFloat(odds[1].toLowerCase())
+        } 
+
+        results.push(match)      
       })
     }
-  })
-})()
 
-// main()
+    return results
+  })
+
+  for (const match of matches) {
+    fs.appendFileSync("results.txt", `\n${match.firstTeamName},${match.secondTeamName},${match.firstTeamOdds},${match.secondTeamOdds}`)
+  }
+  
+  await browser.close()
+})()
