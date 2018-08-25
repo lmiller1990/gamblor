@@ -6,6 +6,7 @@
   "author": "lmiller1990 <lachlan.miller.1990@outlook.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/es6-shim": "^0.31.37",
     "@types/puppeteer": "^1.6.0",
     "minimist": "^1.2.0",
     "puppeteer": "^1.7.0",
