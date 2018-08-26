@@ -5,10 +5,10 @@ from common import get_first_chance, fetch_and_display_odds
 from data_utils import load_data, load_and_clean_data
 
 first_to_stats = { 
-    'first_blood': { 'stat': 'fb', 'unit': 1.0, 'data_dir': 'odds/first_blood' },
+    #'first_blood': { 'stat': 'fb', 'unit': 1.0, 'data_dir': 'odds/first_blood' },
     'first_turret': { 'stat': 'ft', 'unit': 1.0, 'data_dir': 'odds/first_turret' },
-    'first_dragon': { 'stat': 'fd', 'unit': 1.0, 'data_dir': 'odds/first_dragon' },
-    'first_baron': { 'stat': 'fbaron', 'unit': 1.0, 'data_dir': 'odds/first_baron' }
+    #'first_dragon': { 'stat': 'fd', 'unit': 1.0, 'data_dir': 'odds/first_dragon' },
+    #'first_baron': { 'stat': 'fbaron', 'unit': 1.0, 'data_dir': 'odds/first_baron' }
 }
 
 evs_by_bookie = {}

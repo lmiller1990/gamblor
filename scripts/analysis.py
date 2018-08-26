@@ -16,6 +16,7 @@ df = load_and_clean_data()
 
 fields = ['fb', 'ft', 'fd', 'fbaron']
 
+print(df.league.unique())
 teams = teams_by_league(df, ['nalcs'])
 stats = {}
 
@@ -33,7 +34,7 @@ for team in teams:
     stats['wins'].append(team_games(df, team).result.sum())
 
 result = pd.DataFrame(stats, index=teams)
-print(result.sort_values(by='wins', ascending=False))
+#print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',
 #       'playerid', 'side', 'position', 'player', 'team', 'champion', 'ban1',
 #       'ban2', 'ban3', 'ban4', 'ban5', 'gamelength', 'result', 'k', 'd', 'a',

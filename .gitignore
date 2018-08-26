@@ -1,4 +1,5 @@
 .ipynb_checkpoints/
+scripts/__pycache__/
 *.ipynb
 node_modules/
 data.csv

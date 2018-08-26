@@ -41,6 +41,7 @@ var launch_options_1 = require("./launch-options");
 var puppeteer = require("puppeteer");
 var path = require("path");
 var minimist = require("minimist");
+var utils_1 = require("./utils");
 var args = minimist(process.argv.slice(2));
 var theEvent = args.event;
 var theMarket = args.market;
@@ -88,50 +89,62 @@ var visitEsportsPage = (function (page) { return __awaiter(_this, void 0, void 0
 }); });
 var main = (function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var browser, page, matches, _i, matches_1, match;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var browser, page, matches, _i, _a, match;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     clearPreviouslyScrapedData();
                     return [4 /*yield*/, puppeteer.launch(launch_options_1.options)];
                 case 1:
-                    browser = _a.sent();
+                    browser = _b.sent();
                     return [4 /*yield*/, browser.newPage()];
                 case 2:
-                    page = _a.sent();
+                    page = _b.sent();
                     return [4 /*yield*/, visitEsportsPage(page)];
                 case 3:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, page.mainFrame().waitForSelector(".sm-MarketGroup_GroupName ")];
                 case 4:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, attachToWindow(page, 'theMarket', JSON.stringify(theMarket))];
                 case 5:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, attachToWindow(page, 'theEvent', JSON.stringify(theEvent))];
                 case 6:
-                    _a.sent();
+                    _b.sent();
+                    console.log(theEvent, theMarket);
                     return [4 /*yield*/, page.$$eval(".sm-MarketGroup_GroupName ", function (divs) {
                             var theLeague = Array.from(divs)
-                                .find(function (x) { return x.innerText.toLowerCase().includes(theEvent); });
+                                .filter(function (x) {
+                                console.log(x.innerText, theEvent);
+                                if (x.innerText.toLowerCase().includes(theEvent)) {
+                                    console.log('found it', x);
+                                    return x;
+                                }
+                            })[0];
+                            // console.log("Finding for ", theEvent, theMarket) 
                             // the table containing all the markets
                             //
+                            console.log(theLeague);
                             var table = theLeague.parentElement.parentElement;
                             var market = Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
-                                .find(function (x) { return x.innerText.toLowerCase().includes(theMarket); })
-                                .click();
+                                .find(function (x) {
+                                console.log(x.innerText);
+                                return x.innerText.toLowerCase().includes(theMarket);
+                            });
+                            market.click();
                         })];
                 case 7:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, page.waitForSelector(".cm-CouponMarketGroupButton_Title")];
                 case 8:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, attachToWindow(page, 'getTeams', getTeams)];
                 case 9:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, attachToWindow(page, 'getOdds', getOdds)];
                 case 10:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, page.$eval(".gl-MarketGroup", function (marketGroup) {
                             var results = [];
                             var tableRows = Array.from(marketGroup.querySelectorAll(".gl-Market_General"));
@@ -154,14 +167,14 @@ var main = (function main() {
                             return results;
                         })];
                 case 11:
-                    matches = _a.sent();
-                    for (_i = 0, matches_1 = matches; _i < matches_1.length; _i++) {
-                        match = matches_1[_i];
+                    matches = _b.sent();
+                    for (_i = 0, _a = utils_1.removeDupMatches(matches); _i < _a.length; _i++) {
+                        match = _a[_i];
                         fs.appendFileSync(path.join(__dirname, "..", "odds", outputDirectory, outputFile), "\n" + match.firstTeamName + "," + match.secondTeamName + "," + match.firstTeamOdds + "," + match.secondTeamOdds);
                     }
                     return [4 /*yield*/, browser.close()];
                 case 12:
-                    _a.sent();
+                    _b.sent();
                     return [2 /*return*/];
             }
         });

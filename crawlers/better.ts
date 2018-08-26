@@ -3,10 +3,11 @@ import { options } from "./launch-options"
 import * as puppeteer from "puppeteer"
 import * as path from "path"
 import * as minimist from "minimist" 
+import { removeDupMatches } from "./utils";
 
 const args = minimist(process.argv.slice(2))
 
-interface Match {
+export interface Match {
   firstTeamName: String
   secondTeamName: String
   firstTeamOdds: Number
@@ -16,7 +17,7 @@ interface Match {
 const theEvent = args.event
 const theMarket = args.market
 const outputFile = args.outputFile
-const outputDirectory = args.outputDirectory
+const outputDirectory = args.outputDirectory  
 
 function attachToWindow(page, propName, propVal) {
   return page.evaluate(`
@@ -78,15 +79,30 @@ const main = (async function main() {
   await attachToWindow(page, 'theMarket', JSON.stringify(theMarket))
   await attachToWindow(page, 'theEvent', JSON.stringify(theEvent))
 
+  console.log(theEvent, theMarket)
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
     const theLeague: HTMLElement = Array.from(divs)
-      .find((x: HTMLElement) => x.innerText.toLowerCase().includes(theEvent)) as HTMLElement
+      .filter((x: HTMLElement) => { 
+        console.log(x.innerText, theEvent)
+        if (x.innerText.toLowerCase().includes(theEvent)) {
+          console.log('found it', x)
+          return x
+        }
+      })[0] as HTMLElement
+
+      // console.log("Finding for ", theEvent, theMarket) 
     // the table containing all the markets
     //
+    console.log(theLeague)
     const table: HTMLElement = theLeague.parentElement.parentElement
     const market = (Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
-      .find((x: HTMLElement) => x.innerText.toLowerCase().includes(theMarket)) as HTMLElement)
-      .click()
+      .find(function (x: HTMLElement) : any { 
+        console.log(x.innerText)
+        return x.innerText.toLowerCase().includes(theMarket) 
+      }) as HTMLElement
+    )
+      
+    market.click()
     
   })
 
@@ -118,12 +134,12 @@ const main = (async function main() {
     return results
   })
 
-  for (const match of matches) {
+  for (const match of removeDupMatches(matches)) {
     fs.appendFileSync(
       path.join(__dirname, "..", "odds", outputDirectory, outputFile), 
       `\n${match.firstTeamName},${match.secondTeamName},${match.firstTeamOdds},${match.secondTeamOdds}`
     )
   }
   
-  await browser.close()
+ await browser.close()
 })()
