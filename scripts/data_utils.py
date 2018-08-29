@@ -22,9 +22,7 @@ def team_games(df, team):
             ].drop_duplicates(subset=['gameid'])
 
 def load_data(path, csv):
-    df = pd.read_csv("data.csv")
-    odds = pd.read_csv(path + "/" + csv)
-    return df, odds
+    return pd.read_csv(path + "/" + csv)
 
 def load_and_clean_data():
     df = pd.read_csv("data.csv")

@@ -8,32 +8,17 @@ from data_utils import load_and_clean_data, team_games, teams_by_league, games_b
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LinearRegression
 
-fields = 'team player teamkills teamdeaths'.split()
+team = '100 thieves'
 df = load_and_clean_data()
-#opponents = opponent_games(df, 'team solomid', team_games.gameid)
 
-#result = games.merge(opponents, on="gameid")[['week', 'game', 'team', 'opponent', 'side', 'result', 'teamkills', 'teamdeaths']]
+games = df[(df.league == 'nalcs') & (df.ft == 1.0) & (df.player != 'Team')][['gameid', 'player', 'ft', 'team', 'result']]
 
-fields = ['fb', 'ft', 'fd', 'fbaron']
+print(games)
 
-print(df.league.unique())
-teams = teams_by_league(df, ['nalcs'])
-stats = {}
+team_games = team_games(df, team)
+opponents = opponent_games(df, team, team_games.gameid)
 
-for f in fields:
-    stats[f] = []
-    for team in teams:
-        games = team_games(df, team)
-        games.replace(" ", np.nan, inplace=True)
-        taken = games[f].sum()
-        total = games[f].shape[0]
-        stats[f].append(taken/total)
-
-stats['wins'] = []
-for team in teams:
-    stats['wins'].append(team_games(df, team).result.sum())
-
-result = pd.DataFrame(stats, index=teams)
+result = team_games.merge(opponents, on="gameid")[['week', 'game', 'team', 'opponent', 'side', 'result', 'fd']]
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',
 #       'playerid', 'side', 'position', 'player', 'team', 'champion', 'ban1',

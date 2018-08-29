@@ -1,6 +1,6 @@
 import sys
 from data_utils import load_and_clean_data
-from graphs import running_victories
+from graphs import running_victories, running_first_bloods
 from common import get_first_chance, get_ev, relative_odds
 from stats import team_medians_kill_and_team
 
@@ -32,6 +32,7 @@ Example:
 if program_to_run == 'win_percentage':
     t1_win_chance = get_first_chance('result', 1.0, teams[0], df)/100
     t2_win_chance = get_first_chance('result', 1.0, teams[1], df)/100
+    print(t1_win_chance, t2_win_chance)
     print(relative_odds(t1_win_chance, t2_win_chance))
 
 """
@@ -65,8 +66,11 @@ if program_to_run == 'kills':
     print("Total k/d:", total_kills, total_deaths)
 
 if 'first' in program_to_run:
-    market = sys.argv[1].split('-')[1]
-    t1_win_chance = get_first_chance(market, 1.0, teams[0], df)/100
-    t2_win_chance = get_first_chance(market, 1.0, teams[1], df)/100
-    print(t1_win_chance, t2_win_chance)
-    print(relative_odds(t1_win_chance, t2_win_chance))
+    running_first_bloods(df, teams)
+    #market = sys.argv[1].split('-')[1]
+    #t1_win_chance = get_first_chance(market, 1.0, teams[0], df)/100
+    #t2_win_chance = get_first_chance(market, 1.0, teams[1], df)/100
+    #print(t1_win_chance, t2_win_chance)
+    #print(relative_odds(t1_win_chance, t2_win_chance))
+
+
