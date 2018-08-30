@@ -1,4 +1,5 @@
 .DS_Store
+__pycache__
 .ipynb_checkpoints/
 scripts/__pycache__/
 *.ipynb
@@ -7,3 +8,4 @@ data.csv
 scripts/__pycache__
 odds/
 tmp/
+crawlers/all_markets.sh
