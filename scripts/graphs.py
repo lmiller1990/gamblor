@@ -27,21 +27,21 @@ def running_victories(df, teams):
 
     return plt
 
-def running_first_bloods(df, teams):
+def running_first_stat(df, teams, stat):
     for team in teams:
         games = team_games(df, team)
         total_games = games.shape[0]
         chance = []
-        print(team, "Fbaron% over last n games")
+        print(team, stat,"% over last n games")
         for i in range(0, total_games):
-            fb_chance = get_first_chance('fbaron', 1.0, team, df, total_games-i)
+            fb_chance = get_first_chance(stat, 1.0, team, df, total_games-i)
             chance.append(fb_chance)
             print(total_games-i, "\t", round(fb_chance, 2))
 
             
         plt.plot(np.arange(1, total_games+1), chance, label=team)
         plt.ylim(0, 105)
-    plt.title("fd% over last n games")
+    plt.title(stat + "% over last n games")
     plt.legend()
     plt.show()
         #print(team, games_played)

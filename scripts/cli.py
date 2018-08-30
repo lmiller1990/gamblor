@@ -1,6 +1,6 @@
 import sys
 from data_utils import load_and_clean_data
-from graphs import running_victories, running_first_bloods
+from graphs import running_victories, running_first_stat
 from common import get_first_chance, get_ev, relative_odds
 from stats import team_medians_kill_and_team
 
@@ -66,7 +66,8 @@ if program_to_run == 'kills':
     print("Total k/d:", total_kills, total_deaths)
 
 if 'first' in program_to_run:
-    running_first_bloods(df, teams)
+    stat = program_to_run.split(' ')[1]
+    running_first_stat(df, teams, stat)
     #market = sys.argv[1].split('-')[1]
     #t1_win_chance = get_first_chance(market, 1.0, teams[0], df)/100
     #t2_win_chance = get_first_chance(market, 1.0, teams[1], df)/100
