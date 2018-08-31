@@ -7,11 +7,26 @@ import numpy as np
 from data_utils import load_and_clean_data, team_games, teams_by_league, games_by_league, opponent_games
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LinearRegression
-from graphs import average_first_stat
+from graphs import running_first_stat
 
 df = load_and_clean_data()
+stats = ['fb', 'ft', 'fd', 'fbaron']
+fig, ax = plt.subplots(nrows=2, ncols=2)
+i = 0
 
-average_first_stat(df, ['vitality', 'schalke 04'], 'ft')
+for row in ax:
+    for col in row:
+        for team in ['team liquid', '100 thieves']:
+            col.set_title(stats[i] + "%")
+            [total_games, chance] = running_first_stat(df, team, stats[i])
+            col.plot(np.arange(1, total_games+1), chance, label=team)
+
+        i+=1
+
+plt.ylim(0, 105)
+plt.legend()
+fig.tight_layout()
+plt.show()
 
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',

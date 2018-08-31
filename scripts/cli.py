@@ -2,6 +2,8 @@ import sys
 import argparse
 from data_utils import load_and_clean_data
 from graphs import running_victories, running_first_stat, average_first_stat
+import matplotlib.pyplot as plt
+import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--teams", help="teams to include in analysis")
@@ -18,7 +20,37 @@ if 'running_victories' in args.scripts:
     plt.show()
 
 if 'first-av' in args.scripts:
-    average_first_stat(df, args.teams.split(','), args.stat)
+    stats = ['fb', 'ft', 'fd', 'fbaron']
+    fig, ax = plt.subplots(nrows=2, ncols=2)
+    i = 0
+    for row in ax:
+        for col in row:
+            for team in args.teams.split(','):
+                col.set_title(stats[i] + "%")
+                [total_games, chance] = average_first_stat(df, team, stats[i])
+
+                col.plot(np.arange(1, total_games+1), chance, label=team)
+            i = i + 1
+
+    plt.ylim(0, 1.)
+    plt.legend()
+    fig.tight_layout()
+    plt.show()
 
 if 'first-running' in args.scripts:
-    running_first_stat(df, args.teams.split(','), args.stat)
+    stats = ['fb', 'ft', 'fd', 'fbaron']
+    fig, ax = plt.subplots(nrows=2, ncols=2)
+    i = 0
+    for row in ax:
+        for col in row:
+            for team in args.teams.split(','):
+                col.set_title(stats[i] + "%")
+                [total_games, chance] = running_first_stat(df, team, stats[i])
+
+                col.plot(np.arange(1, total_games+1), chance, label=team)
+            i = i + 1
+
+    plt.legend()
+    fig.tight_layout()
+    plt.show()
+

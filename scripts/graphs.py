@@ -1,7 +1,6 @@
-import matplotlib.pyplot as plt
-import numpy as np
 from data_utils import team_games
 from common import get_first_chance
+import numpy as np
 
 def running_victories(df, teams):
     """
@@ -28,35 +27,26 @@ def running_victories(df, teams):
 
     return plt
 
-def average_first_stat(df, teams, stat):
-    for team in teams:
-        averages = []
-        firsts = 0.0
-        games = team_games(df, team)
-        for i in range(games.shape[0]):
-            firsts += games.iloc[i][stat]
-            averages.append(firsts / (i+1))
+def average_first_stat(df, team, stat):
+    averages = []
+    firsts = 0.0
+    games = team_games(df, team)
+    games.dropna(inplace=True)
+    for i in range(games.shape[0]):
+        firsts += games.iloc[i][stat]
+        averages.append(firsts / (i+1))
+    
+    return [ games.shape[0], averages ]
 
-        plt.plot(np.arange(1, games.shape[0]+1), averages, label=team)
-    plt.ylim(0, 1.05)
 
-    plt.title("Average " + stat + "% over last n games")
-    plt.legend()
-    plt.show()
+def running_first_stat(df, team, stat):
+    games = team_games(df, team)
+    total_games = games.shape[0]
+    games.dropna(inplace=True)
+    chance = []
 
-def running_first_stat(df, teams, stat):
-    for team in teams:
-        games = team_games(df, team)
-        total_games = games.shape[0]
-        chance = []
-        print(team, stat,"% over last n games")
-        for i in range(0, total_games):
-            fb_chance = get_first_chance(stat, 1.0, team, df, total_games-i)
-            chance.append(fb_chance)
-            print(total_games-i, "\t", round(fb_chance, 2))
+    for i in range(0, total_games):
+        fb_chance = get_first_chance(stat, 1., team, df, total_games-i)
+        chance.append(fb_chance)
 
-        plt.plot(np.arange(1, total_games+1), chance, label=team)
-    plt.ylim(0, 105)
-    plt.title(stat + "% over last n games")
-    plt.legend()
-    plt.show()
+    return [total_games, chance]
