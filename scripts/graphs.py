@@ -19,7 +19,6 @@ def running_victories(df, teams):
     victories_for_teams = list(map(get_game, teams))
 
     for team_df in victories_for_teams:
-        print(team_df)
         running_wins = np.cumsum(team_df.result)
         team_name = team_df.iloc[0].team
         plt.plot(np.arange(1, team_df.shape[0]+1), running_wins, label=team_name)
@@ -38,11 +37,10 @@ def average_first_stat(df, teams, stat):
             firsts += games.iloc[i][stat]
             averages.append(firsts / (i+1))
 
-        print(games.shape[0]+1, len(averages))
         plt.plot(np.arange(1, games.shape[0]+1), averages, label=team)
     plt.ylim(0, 1.05)
 
-    plt.title(stat + "% over last n games")
+    plt.title("Average " + stat + "% over last n games")
     plt.legend()
     plt.show()
 
@@ -62,6 +60,3 @@ def running_first_stat(df, teams, stat):
     plt.title(stat + "% over last n games")
     plt.legend()
     plt.show()
-        #print(team, games_played)
-        #get_first_chance(stat, unit, team, df, last_n_games=-1):
-

@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def games_by_league(df, league):
     return df[df.league.isin(league)].drop_duplicates(subset=['gameid', 'team'])
@@ -26,7 +27,7 @@ def load_data(path, csv):
 
 def load_and_clean_data():
     df = pd.read_csv("data.csv")
-
+    
     df.team =df.team.str.lower()
     df.league = df.league.str.lower()
     return df.replace({ "1": 1.0, "0": 0.0, 1: 1.0, 0: 0.0, 'Blue': 0.0, 'Red': 1.0 })
