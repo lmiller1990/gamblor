@@ -7,18 +7,12 @@ import numpy as np
 from data_utils import load_and_clean_data, team_games, teams_by_league, games_by_league, opponent_games
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LinearRegression
+from graphs import average_first_stat
 
-team = '100 thieves'
 df = load_and_clean_data()
 
-games = df[(df.league == 'nalcs') & (df.ft == 1.0) & (df.player != 'Team')][['gameid', 'player', 'ft', 'team', 'result']]
+average_first_stat(df, ['vitality', 'schalke 04'], 'ft')
 
-print(games)
-
-team_games = team_games(df, team)
-opponents = opponent_games(df, team, team_games.gameid)
-
-result = team_games.merge(opponents, on="gameid")[['week', 'game', 'team', 'opponent', 'side', 'result', 'fd']]
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',
 #       'playerid', 'side', 'position', 'player', 'team', 'champion', 'ban1',

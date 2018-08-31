@@ -25,7 +25,26 @@ def running_victories(df, teams):
         plt.plot(np.arange(1, team_df.shape[0]+1), running_wins, label=team_name)
         plt.legend()
 
+    plt.title("Running victories")
+
     return plt
+
+def average_first_stat(df, teams, stat):
+    for team in teams:
+        averages = []
+        firsts = 0.0
+        games = team_games(df, team)
+        for i in range(games.shape[0]):
+            firsts += games.iloc[i][stat]
+            averages.append(firsts / (i+1))
+
+        print(games.shape[0]+1, len(averages))
+        plt.plot(np.arange(1, games.shape[0]+1), averages, label=team)
+    plt.ylim(0, 1.05)
+
+    plt.title(stat + "% over last n games")
+    plt.legend()
+    plt.show()
 
 def running_first_stat(df, teams, stat):
     for team in teams:
@@ -38,9 +57,8 @@ def running_first_stat(df, teams, stat):
             chance.append(fb_chance)
             print(total_games-i, "\t", round(fb_chance, 2))
 
-            
         plt.plot(np.arange(1, total_games+1), chance, label=team)
-        plt.ylim(0, 105)
+    plt.ylim(0, 105)
     plt.title(stat + "% over last n games")
     plt.legend()
     plt.show()
