@@ -112,20 +112,16 @@ var main = (function main() {
                     return [4 /*yield*/, attachToWindow(page, 'theEvent', JSON.stringify(theEvent))];
                 case 6:
                     _b.sent();
-                    console.log(theEvent, theMarket);
                     return [4 /*yield*/, page.$$eval(".sm-MarketGroup_GroupName ", function (divs) {
                             var theLeague = Array.from(divs)
                                 .filter(function (x) {
                                 console.log(x.innerText, theEvent);
                                 if (x.innerText.toLowerCase().includes(theEvent)) {
-                                    console.log('found it', x);
                                     return x;
                                 }
                             })[0];
-                            // console.log("Finding for ", theEvent, theMarket) 
                             // the table containing all the markets
                             //
-                            console.log(theLeague);
                             var table = theLeague.parentElement.parentElement;
                             var market = Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
                                 .find(function (x) {

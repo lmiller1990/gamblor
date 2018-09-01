@@ -49,7 +49,7 @@ def relative_odds(t1_percent, t2_percent):
             (t2_percent + (1 - t1_percent)) / 2
             ]
 
-def fetch_and_display_odds(teams, odds, bookie, market, evs_by_bookies):
+def fetch_and_display_odds(teams, odds, bookie, market):
     t1, t2 = list(teams.keys())
     match = odds[( odds['team_1'] == t1 ) & ( odds['team_2'] == t2 )]
 

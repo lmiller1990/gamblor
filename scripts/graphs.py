@@ -1,5 +1,6 @@
 from data_utils import team_games
 from common import get_first_chance
+import matplotlib.pyplot as plt
 import numpy as np
 
 def running_victories(df, teams):

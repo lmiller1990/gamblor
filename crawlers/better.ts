@@ -79,21 +79,17 @@ const main = (async function main() {
   await attachToWindow(page, 'theMarket', JSON.stringify(theMarket))
   await attachToWindow(page, 'theEvent', JSON.stringify(theEvent))
 
-  console.log(theEvent, theMarket)
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
     const theLeague: HTMLElement = Array.from(divs)
       .filter((x: HTMLElement) => { 
         console.log(x.innerText, theEvent)
         if (x.innerText.toLowerCase().includes(theEvent)) {
-          console.log('found it', x)
           return x
         }
       })[0] as HTMLElement
 
-      // console.log("Finding for ", theEvent, theMarket) 
     // the table containing all the markets
     //
-    console.log(theLeague)
     const table: HTMLElement = theLeague.parentElement.parentElement
     const market = (Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
       .find(function (x: HTMLElement) : any { 
