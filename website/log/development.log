@@ -1,0 +1,3188 @@
+  [1m[35m (502.7ms)[0m  [1m[35mCREATE DATABASE "web_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (423.3ms)[0m  [1m[35mCREATE DATABASE "web_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (22.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGames (20180901155351)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "result" boolean, "winning_team_id" integer, "first_blood_team_id" integer, "first_turret_team_id" integer, "date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901155351_create_games.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901155351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-09-01 15:54:21.313384"], ["updated_at", "2018-09-01 15:54:21.313384"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (240.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (234.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (537.0ms)[0m  [1m[35mCREATE DATABASE "web_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (521.2ms)[0m  [1m[35mCREATE DATABASE "web_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGames (20180901155351)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "first_blood_team_id" integer, "first_turret_team_id" integer, "date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901155351_create_games.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901155351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateTeams (20180901160013)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901160013_create_teams.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160013"]]
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddTeamIdsToGame (20180901160351)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (9.7ms)[0m  [1m[35mALTER TABLE "games" ADD "winner_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD "loser_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-09-01 16:06:27.392178"], ["updated_at", "2018-09-01 16:06:27.392178"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:1
+  [1m[36mTeam Create (2.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cloud 9"], ["created_at", "2018-09-02 06:08:31.647581"], ["updated_at", "2018-09-02 06:08:31.647581"]]
+  ↳ db/seeds/development.rb:1
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:2
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Team Solomid"], ["created_at", "2018-09-02 06:08:31.658832"], ["updated_at", "2018-09-02 06:08:31.658832"]]
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:4
+  [1m[36mGame Create (3.1ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "created_at", "updated_at", "winner_id", "loser_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["first_blood_team_id", 1], ["created_at", "2018-09-02 06:08:31.675726"], ["updated_at", "2018-09-02 06:08:31.675726"], ["winner_id", 1], ["loser_id", 2]]
+  ↳ db/seeds/development.rb:4
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:1
+  [1m[36mTeam Create (0.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cloud 9"], ["created_at", "2018-09-02 06:08:44.628300"], ["updated_at", "2018-09-02 06:08:44.628300"]]
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:2
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Team Solomid"], ["created_at", "2018-09-02 06:08:44.631514"], ["updated_at", "2018-09-02 06:08:44.631514"]]
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:2
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:1
+  [1m[36mTeam Create (0.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cloud 9"], ["created_at", "2018-09-02 06:08:54.556122"], ["updated_at", "2018-09-02 06:08:54.556122"]]
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:2
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Team Solomid"], ["created_at", "2018-09-02 06:08:54.559107"], ["updated_at", "2018-09-02 06:08:54.559107"]]
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:4
+  [1m[36mGame Create (0.6ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "created_at", "updated_at", "winner_id", "loser_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_blood_team_id", 6], ["first_turret_team_id", 5], ["created_at", "2018-09-02 06:08:54.573725"], ["updated_at", "2018-09-02 06:08:54.573725"], ["winner_id", 5], ["loser_id", 6]]
+  ↳ db/seeds/development.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (7171.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (237.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (239.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (434.9ms)[0m  [1m[35mCREATE DATABASE "web_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (429.1ms)[0m  [1m[35mCREATE DATABASE "web_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGames (20180901155351)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "first_blood_team_id" integer, "first_turret_team_id" integer, "date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901155351_create_games.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901155351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateTeams (20180901160013)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901160013_create_teams.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160013"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddTeamIdsToGame (20180901160351)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "games" ADD "winner_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "games" ADD "loser_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-09-02 06:10:05.784472"], ["updated_at", "2018-09-02 06:10:05.784472"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:1
+  [1m[36mTeam Create (1.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cloud 9"], ["created_at", "2018-09-02 06:10:07.147363"], ["updated_at", "2018-09-02 06:10:07.147363"]]
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:2
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Team Solomid"], ["created_at", "2018-09-02 06:10:07.151307"], ["updated_at", "2018-09-02 06:10:07.151307"]]
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:2
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (223.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (224.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "web_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (405.7ms)[0m  [1m[35mCREATE DATABASE "web_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (432.8ms)[0m  [1m[35mCREATE DATABASE "web_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGames (20180901155351)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "first_blood_team_id" integer, "first_turret_team_id" integer, "date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901155351_create_games.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901155351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateTeams (20180901160013)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180901160013_create_teams.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160013"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddTeamIdsToGame (20180901160351)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "games" ADD "winner_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "games" ADD "loser_id" integer[0m
+  ↳ db/migrate/20180901160351_add_team_ids_to_game.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180901160351"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-09-02 06:10:37.607461"], ["updated_at", "2018-09-02 06:10:37.607461"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6955016089055575695)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:1
+  [1m[36mTeam Create (1.0ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cloud 9"], ["created_at", "2018-09-02 06:10:39.139222"], ["updated_at", "2018-09-02 06:10:39.139222"]]
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:2
+  [1m[36mTeam Create (0.6ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Team Solomid"], ["created_at", "2018-09-02 06:10:39.143043"], ["updated_at", "2018-09-02 06:10:39.143043"]]
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:2
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds/development.rb:4
+  [1m[36mGame Create (1.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_blood_team_id", 2], ["first_turret_team_id", 1], ["date", "2018-09-02 06:10:39.145910"], ["created_at", "2018-09-02 06:10:39.162161"], ["updated_at", "2018-09-02 06:10:39.162161"], ["winner_id", 1], ["loser_id", 2]]
+  ↳ db/seeds/development.rb:4
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds/development.rb:4
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:27:11 +0900
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+LoadError (Unable to autoload constant Api::V1::FirstMarketsController, expected /Users/lachlanmiller/gamblor/web/app/controllers/api/v1/first_markets_controller.rb to define it):
+  
+activesupport (5.2.1) lib/active_support/dependencies.rb:507:in `load_missing_constant'
+bootsnap (1.3.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+activesupport (5.2.1) lib/active_support/dependencies.rb:193:in `const_missing'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:285:in `const_get'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:285:in `block in constantize'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+activesupport (5.2.1) lib/active_support/dependencies.rb:578:in `get'
+activesupport (5.2.1) lib/active_support/dependencies.rb:609:in `constantize'
+actionpack (5.2.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:101:in `binary_params_for?'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:92:in `set_binary_encoding'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:69:in `path_parameters='
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:28:03 +0900
+  
+SyntaxError (/Users/lachlanmiller/gamblor/web/app/controllers/api/v1/first_markets_controller.rb:2: class/module name must be CONSTANT):
+  
+app/controllers/api/v1/first_markets_controller.rb:2: class/module name must be CONSTANT
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:28:47 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:29:53 +0900
+  
+LoadError (Unable to autoload constant API::V1::ApplicationController, expected /Users/lachlanmiller/gamblor/web/app/controllers/api/v1/application_controller.rb to define it):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:13 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:31 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:34 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:37 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:43 +0900
+  
+LoadError (Unable to autoload constant Api::V1::FirstMarketsController, expected /Users/lachlanmiller/gamblor/web/app/controllers/api/v1/first_markets_controller.rb to define it):
+  
+activesupport (5.2.1) lib/active_support/dependencies.rb:507:in `load_missing_constant'
+bootsnap (1.3.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+activesupport (5.2.1) lib/active_support/dependencies.rb:193:in `const_missing'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:285:in `const_get'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:285:in `block in constantize'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+activesupport (5.2.1) lib/active_support/dependencies.rb:578:in `get'
+activesupport (5.2.1) lib/active_support/dependencies.rb:609:in `constantize'
+actionpack (5.2.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:101:in `binary_params_for?'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:92:in `set_binary_encoding'
+actionpack (5.2.1) lib/action_dispatch/http/parameters.rb:69:in `path_parameters='
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:30:53 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:31:01 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:31:37 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:31:49 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:32:19 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:33:01 +0900
+  
+TypeError (superclass mismatch for class FirstMarketsController):
+  
+app/controllers/api/v1/first_markets_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/first_markets_controller.rb:2:in `<module:API>'
+app/controllers/api/v1/first_markets_controller.rb:1:in `<main>'
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 15:33:36 +0900
+Processing by Api::V1::FirstMarketsController#index as HTML
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 16:19:22 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+  [1m[36mGame Load (1.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:7
+Completed 200 OK in 52ms (Views: 11.5ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/api/v1/first_markets" for 127.0.0.1 at 2018-09-02 17:15:52 +0900
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/first_markets"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+webpacker (4.0.0.pre.pre.2) lib/webpacker/dev_server_proxy.rb:18:in `perform_request'
+rack-proxy (0.6.4) lib/rack/proxy.rb:57:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-09-02 17:15:59 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 17:16:13 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 14ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 17:18:06 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 15ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 17:18:07 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 17:29:33 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:29:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/app"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+webpacker (4.0.0.pre.pre.2) lib/webpacker/dev_server_proxy.rb:18:in `perform_request'
+rack-proxy (0.6.4) lib/rack/proxy.rb:57:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:29:56 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 1835ms (Views: 1832.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:30:20 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-8d71e5035f8940a9e3d3.js",
+  "application.js.map": "/packs/application-8d71e5035f8940a9e3d3.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___3902947465640673998_70123781853680'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:30:54 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-8d71e5035f8940a9e3d3.js",
+  "application.js.map": "/packs/application-8d71e5035f8940a9e3d3.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___3902947465640673998_70123740402160'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:31:44 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/lachlanmiller/gamblor/web/public/packs
+  Rendered app/index.html.erb within layouts/application (1437.9ms)
+Completed 500 Internal Server Error in 1446ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-0a126ffdf66071604af0.js",
+  "application.js.map": "/packs/application-0a126ffdf66071604af0.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___3902947465640673998_70123770905360'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:32:39 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (7.1ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-8d71e5035f8940a9e3d3.js",
+  "application.js.map": "/packs/application-8d71e5035f8940a9e3d3.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___1485126025186959565_70135567646060'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:32:58 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (7.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-8d71e5035f8940a9e3d3.js",
+  "application.js.map": "/packs/application-8d71e5035f8940a9e3d3.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___1485126025186959565_70135552308400'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:33:11 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find hello_react.js in /Users/lachlanmiller/gamblor/web/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/application-8d71e5035f8940a9e3d3.js",
+  "application.js.map": "/packs/application-8d71e5035f8940a9e3d3.js.map"
+}
+):
+    1: <%= javascript_pack_tag 'hello_react' %>
+  
+app/views/app/index.html.erb:1:in `_app_views_app_index_html_erb___1485126025186959565_70135567558900'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:41:42 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/lachlanmiller/gamblor/web/public/packs
+  Rendered app/index.html.erb within layouts/application (1423.4ms)
+Completed 200 OK in 2977ms (Views: 2974.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:42:18 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 38ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 17:42:23 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:01:04 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:01:10 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:01:11 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 23ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:02:05 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:02:39 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:02:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 26ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 18:15:34 +0900
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:15:39 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 1466ms (Views: 1463.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:16:15 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:16:16 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 28ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:16:51 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:17:13 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:17:22 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 36ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:17:25 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:18:12 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:18:58 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:20:50 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:21:06 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:21:09 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 35ms (Views: 30.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:21:13 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 41ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:22:09 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:23:00 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 33ms (Views: 31.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:26:54 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 27ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:27:26 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 35ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:27:26 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+  [1m[36mGame Load (1.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:7
+Completed 200 OK in 60ms (Views: 16.7ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:42:15 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 28ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:42:15 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.9ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 75ms (Views: 15.2ms | ActiveRecord: 46.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:43:20 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:43:20 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:43:20 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (2.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 2.1ms)
+
+
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (2.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (4.9ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 12ms (Views: 2.5ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:43:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:43:24 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:43:24 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mTeam Load (5.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 10ms (Views: 2.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:44:10 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:44:10 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:44:10 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (16.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 19ms (Views: 1.8ms | ActiveRecord: 16.9ms)
+
+
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (13.9ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (5.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 30ms (Views: 8.9ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:46:22 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 23ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:46:23 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:46:23 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (46.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+Processing by Api::V1::TeamsController#show as HTML
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 50ms (Views: 3.4ms | ActiveRecord: 46.1ms)
+
+
+  [1m[36mTeam Load (10.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 15ms (Views: 2.1ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:49:19 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 34ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:49:20 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:49:20 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (6.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 6.4ms)
+
+
+  [1m[36mTeam Load (15.0ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (19.9ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 39ms (Views: 2.3ms | ActiveRecord: 34.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:49:34 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:49:35 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:49:35 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (9.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 12ms (Views: 2.2ms | ActiveRecord: 9.2ms)
+
+
+  [1m[36mTeam Load (17.9ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 22ms (Views: 1.6ms | ActiveRecord: 18.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:49:57 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 28ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:49:58 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:49:58 +0900
+  [1m[36mTeam Load (2.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 2.0ms)
+
+
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (4.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:50:34 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 34ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:50:34 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:50:34 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (11.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 16ms (Views: 2.3ms | ActiveRecord: 12.4ms)
+
+
+  [1m[36mTeam Load (25.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 27ms (Views: 1.9ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:50:47 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 36ms (Views: 32.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:50:47 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:50:47 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:51:40 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:51:41 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:51:41 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (4.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 4.0ms)
+
+
+  [1m[36mTeam Load (5.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (5.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 16ms (Views: 2.3ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:51:51 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:51:52 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:51:52 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mTeam Load (2.0ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (3.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:51:57 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 30ms (Views: 24.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:51:57 +0900
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 18:51:57 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 1.3ms)
+
+
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:54:37 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:54:38 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.8ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:54:41 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:54:42 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:54:44 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:54:45 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:55:02 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:55:02 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:55:15 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 34ms (Views: 30.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:55:16 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/v1/team/2" for 127.0.0.1 at 2018-09-02 18:55:21 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/team/2"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request'
+rack-proxy (0.6.4) lib/rack/proxy.rb:57:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:55:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 27ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:55:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (22.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 24ms (Views: 1.8ms | ActiveRecord: 22.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 18:55:46 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 18:55:59 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 25ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 18:55:59 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (18.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 21ms (Views: 1.9ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:00:45 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:00:46 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:01:03 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 49ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:01:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 34ms (Views: 30.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:01:24 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (25.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 27ms (Views: 1.6ms | ActiveRecord: 25.3ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 19:01:27 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:01:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 32.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:01:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 19:01:45 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:01:53 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:01:54 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (7.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 10ms (Views: 1.8ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:02:21 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 30ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:02:21 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (4.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 7ms (Views: 1.8ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:34:02 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:34:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:46:00 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 25ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:56:22 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:57:30 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:57:30 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (3.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:58:59 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:58:59 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 19:59:09 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 19:59:10 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:03:26 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:03:27 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:04:38 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 44ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:04:38 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (5.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:04:47 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 28ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:04:48 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:12:14 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:12:15 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (31.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 34ms (Views: 1.8ms | ActiveRecord: 31.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:12:23 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:12:24 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (7.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.6ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:12:48 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:12:49 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (7.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 10ms (Views: 1.7ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:31:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:32:14 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:32:27 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:33:09 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:33:26 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:34:28 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 25ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:38:52 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:39:35 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:39:45 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:39:58 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:40:34 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:40:39 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:42:42 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:42:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (5.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:42:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:42:47 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:42:52 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:43:13 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 25ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:43:13 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (17.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 19ms (Views: 1.8ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:43:17 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:43:51 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:43:51 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:43:51 +0900
+  [1m[36mTeam Load (43.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 45ms (Views: 1.9ms | ActiveRecord: 43.0ms)
+
+
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 38ms (Views: 34.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:43:51 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:43:53 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:44:06 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 47ms (Views: 44.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:44:06 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (3.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:44:11 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:44:35 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 30ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:44:36 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (20.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 22ms (Views: 1.8ms | ActiveRecord: 20.1ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:44:38 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:44:59 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:44:59 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:45:01 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:45:34 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:45:35 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (8.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 11ms (Views: 1.9ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:45:37 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 20:45:39 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:45:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 30ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:45:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (10.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 13ms (Views: 2.0ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:45:45 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:46:35 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:46:35 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (5.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 38ms (Views: 8.4ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:46:36 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 22ms (Views: 9.9ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:47:03 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:47:04 +0900
+Processing by Api::V1::TeamsController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/lachlanmiller/gamblor/web/app/models/team.rb:3: syntax error, unexpected tOP_ASGN, expecting keyword_end
+(Game.where(loser_id: id)) ||= []
+                              ^):
+  
+app/models/team.rb:3: syntax error, unexpected tOP_ASGN, expecting keyword_end
+app/controllers/api/v1/teams_controller.rb:5:in `index'
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:47:13 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:47:14 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 26ms (Views: 7.5ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:47:16 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 24ms (Views: 11.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:48:07 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 23ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:48:07 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 60ms (Views: 8.0ms | ActiveRecord: 49.0ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:48:14 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 25ms (Views: 11.4ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:48:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:48:25 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:48:27 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:48:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:48:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:48:47 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:48:47 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (18.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 21ms (Views: 1.6ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:00 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:00 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:08 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:08 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:49:11 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:15 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:16 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (2.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:49:18 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 20:49:19 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:38 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:38 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:44 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:44 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (5.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:49:48 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:49:48 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (4.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:49:52 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:00 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:50:01 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:06 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:50:06 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (2.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:50:09 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:25 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:26 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:34 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 32ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:50:34 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (19.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 22ms (Views: 1.8ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:50:36 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:45 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:50:46 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:50:51 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:50:59 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:50:59 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 20:51:01 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 20:51:32 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 30ms (Views: 26.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 20:51:33 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:01:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:01:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (4.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 38ms (Views: 7.4ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:01:46 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 31ms (Views: 17.3ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:01:55 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:01:55 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 20ms (Views: 5.8ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:01:56 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 19ms (Views: 8.8ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:05:20 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:05:21 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:05:44 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 32ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:05:45 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:05:50 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:05:51 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:05:53 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 33ms (Views: 30.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:05:54 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:05:55 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:07:29 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 31ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:07:29 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:13:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 23ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:13:24 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (22.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 25ms (Views: 1.6ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:13:32 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:13:33 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (8.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 11ms (Views: 1.9ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:13:42 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 25ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:13:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (16.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 18ms (Views: 1.9ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:13:46 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:13:59 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:14:00 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:14:02 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:14:19 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 31ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:14:19 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:14:23 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 32ms (Views: 28.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:14:23 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:14:25 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:14:42 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 30ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:14:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (7.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:14:45 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:14:57 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 26.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:14:58 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (21.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 24ms (Views: 1.9ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:15:00 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:17:04 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:17:05 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:17:21 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:17:21 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:17:24 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 32ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:17:25 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:17:27 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:17:38 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 26ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:17:38 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:17:39 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:17:49 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 33ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:17:49 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:17:50 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:18:03 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 36ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:18:04 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (30.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 33ms (Views: 1.9ms | ActiveRecord: 30.4ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:18:05 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:18:10 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:18:11 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (5.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:18:16 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 21:18:38 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 35ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 21:18:38 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:18:43 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/teams/1" for 127.0.0.1 at 2018-09-02 21:18:45 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 21:18:48 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-02 22:03:18 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 13ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 22:03:22 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 22:03:22 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/teams/2" for 127.0.0.1 at 2018-09-02 22:03:25 +0900
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/teams_controller.rb:9
+  [1m[36mGame Load (1.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 2], ["loser_id", 2]]
+  ↳ app/controllers/api/v1/teams_controller.rb:11
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 22:59:57 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 22:59:58 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:00:44 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 28ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:00:57 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:04:01 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 31ms (Views: 28.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:04:39 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 24ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:04:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:04:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:04:50 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:05:58 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 30ms (Views: 27.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:05:58 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:06:00 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 45ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:06:00 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:06:07 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 23ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:06:07 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (8.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:16:01 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:16:02 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:19:43 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:19:43 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (16.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 19ms (Views: 1.8ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:19:45 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 35ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:19:46 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:19:50 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:19:51 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:20:18 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 28ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:20:19 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:21:38 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:21:39 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (12.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 14ms (Views: 1.7ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:21:48 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:21:49 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (7.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:22:02 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 26ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:22:03 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:24:11 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 31ms (Views: 27.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:24:11 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (12.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 15ms (Views: 1.9ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-02 23:24:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-02 23:24:46 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (3.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 3.3ms)
+
+
