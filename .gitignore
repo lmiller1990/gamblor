@@ -9,3 +9,5 @@ scripts/__pycache__
 odds/
 tmp/
 crawlers/all_markets.sh
+web/node_modules
+web/public/packs
