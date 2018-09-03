@@ -2,7 +2,7 @@ module Api
   module V1
     class TeamsController < ::ActionController::API
       def index
-        render json: Team.all
+        render json: Team.all.where(id: [params[:ids]])
       end
 
       def show

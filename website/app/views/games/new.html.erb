@@ -1,0 +1,9 @@
+<%= form_with model: @game do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date, value: Date.today %>
+  <%= f.label :blue_side %>
+  <%= f.select :blue_side_team_id, @teams_for_select %>
+  <%= f.label :red_site %>
+  <%= f.select :red_side_team_id, options_for_select(@teams_for_select, @teams_for_select[1][1]) %>
+  <%= f.submit %>
+<% end %>

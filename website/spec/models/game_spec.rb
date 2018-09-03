@@ -1,19 +1,20 @@
 require 'rails_helper'
 
 describe Game do
-  context 'the game is complete' do
-    let!(:game) { create(:game) }
-    let!(:winner) { create(:team) }
-    let!(:loser) { create(:team) }
+  let!(:blue_side_team) { create(:blue_side_team) }
+  let!(:red_side_team) { create(:red_side_team) }
+  let!(:game) { 
+    create(:game, winner_id: blue_side_team.id, loser_id: red_side_team.id) }
 
-    before do
-      game.winner_id = winner.id
-      game.loser_id = loser.id
-    end
+  describe '#winner' do
+    it { expect(game.winner).to eq blue_side_team }
+  end
 
-    it 'has a winning and losing team' do
-      expect(game.winner).to eq winner
-      expect(game.loser).to eq loser
-    end
+  describe '#loser' do
+    it { expect(game.loser).to eq red_side_team }
+  end
+
+  describe '#teams' do
+    it { expect(game.teams).to eq [blue_side_team, red_side_team] }
   end
 end
