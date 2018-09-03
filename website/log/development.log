@@ -3186,3 +3186,54 @@ Processing by Api::V1::TeamsController#index as HTML
 Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 3.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-09-03 21:33:40 +0900
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/lachlanmiller/.rvm/gems/ruby-2.4.1/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 18ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-03 21:33:46 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 1737ms (Views: 1734.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-03 21:33:48 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (13.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 45ms (Views: 7.6ms | ActiveRecord: 34.3ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-03 22:08:53 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 38ms (Views: 34.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-03 22:08:54 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/app" for 127.0.0.1 at 2018-09-03 22:09:10 +0900
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Rendered app/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/teams" for 127.0.0.1 at 2018-09-03 22:09:10 +0900
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (6.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/api/v1/teams_controller.rb:5
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 6.1ms)
+
+
