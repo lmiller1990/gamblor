@@ -1,3 +1,34 @@
-<h3>Game</h3>
+<div class="game_show">
 
-<%= @game.inspect %>
+  <div>
+    <%= @game.date.strftime("%Y/%m/%d") %>
+  </div>
+
+  <% if @game.winner_id && @game.loser_id %>
+
+    <span class="winner"><%= @game.winner.name %></span> vs <%= @game.loser.name %>
+
+  <% else %>
+
+    <%= @game.blue_side_team.name %> vs <%= @game.red_side_team.name %>
+
+  <% end %>
+</div>
+
+<div>
+  First blood: <%= @first_blood_team %>
+</div>
+
+<div>
+  First turret: <%= @first_turret_team %>
+</div>
+
+<div>
+  First dragon: <%= @first_dragon_team %>
+</div>
+
+<div>
+  First baron: <%= @first_baron_team %>
+</div>
+
+<%= link_to 'Edit', edit_game_path(@game), method: :get %>

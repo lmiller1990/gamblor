@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Team do
   describe '#games' do
-    let!(:team)  { create(:team) }
+    let!(:team)  { create(:red_side_team) }
     let!(:victory) { create(:game, winner_id: team.id) }
     let!(:defeat) { create(:game, loser_id: team.id) }
 

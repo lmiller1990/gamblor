@@ -9,15 +9,13 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TeamContainer from '../src/features/teams/team_container.jsx'
+import Games from '../src/features/games'
 import { Provider } from 'react-redux'
-import store from '../src/store.js' 
+// import store from '../src/store.js' 
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <TeamContainer />
-    </Provider>,
+    <Games />,
     document.body.appendChild(document.createElement('div')),
   )
 })

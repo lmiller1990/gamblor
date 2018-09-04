@@ -1,11 +1,17 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update]
+
+  def index
+    @games = Game.all.order(date: :asc)
+  end
+
   def new
     @game = Game.new
     @teams_for_select = Team.all.collect {|t| [ t.name, t.id ] }
   end
 
   def show
+    set_first_teams
   end
 
   def create
@@ -20,9 +26,22 @@ class GamesController < ApplicationController
 
   def update
     @game.update_attributes(game_params)
+
+    redirect_to @game
   end
 
   private
+
+  def set_first_teams
+    %w(blood turret dragon baron).each do |market|
+      if @game["first_#{market}_team_id".to_sym]
+        instance_variable_set(
+          "@first_#{market}_team", 
+          @game.send("first_#{market}_team".to_sym).name)
+      else
+      end
+    end
+  end
 
   def game_params
     params.require(:game).permit(

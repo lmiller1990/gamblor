@@ -39,7 +39,8 @@ if 'first_to_market' in args.scripts:
 
                 team_0, team_1 = teams[0], teams[1]
 
-                print("\n===", team_0, "vs", team_1, "-", stat, "last", n, "games ===")
+                last_n_games = "last " + str(n) if int(n) > 0 else "all time"
+                print("\n===", team_0, "vs", team_1, "-", stat, last_n_games, "games ===")
 
                 relative_odds = {}
                 relative_odds[team_0] = (ft_chances[team_0] + (100 - ft_chances[team_1])) / 200
@@ -58,12 +59,12 @@ if 'first-av' in args.scripts:
     i = 0
     for row in ax:
         for col in row:
-            col.set_ylim([0, 1])
+            col.set_ylim([0, 100])
             for team in args.teams.split(','):
-                col.set_title(stats[i] + "%")
+                col.set_title(stats[i] + "% (all-time av)")
                 [total_games, chance] = average_first_stat(df, team, stats[i])
 
-                col.plot(np.arange(1, total_games+1), chance, label=team)
+                col.plot(np.arange(1, total_games+1), np.array(chance) * 100, label=team)
             i = i + 1
 
     plt.legend()
@@ -76,8 +77,9 @@ if 'first-running' in args.scripts:
     i = 0
     for row in ax:
         for col in row:
+            col.set_ylim([0, 100])
             for team in args.teams.split(','):
-                col.set_title(stats[i] + "%")
+                col.set_title(stats[i] + "% (moving av)")
                 [total_games, chance] = running_first_stat(df, team, stats[i])
 
                 col.plot(np.arange(1, total_games+1), chance, label=team)

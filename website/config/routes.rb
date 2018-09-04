@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'app', to: 'app#index'
+  get 'admin', to: 'admin#index'
 
   resources :games
 

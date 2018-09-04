@@ -58,6 +58,6 @@ def fetch_and_display_odds(teams, odds, bookie, market):
 
     t1_ev = get_ev(teams[t1], t1_odds)
     t2_ev = get_ev(teams[t2], t2_odds)
-    print(t1, ":", t2, t1_odds, ":", t2_odds)
+    print("Odds:", t1_odds, ":", t2_odds)
     print(t1, "\tev:", round(t1_ev, 2), "\t<------------------- High EV" if t1_ev > 1.1 else  "")
     print(t2, "\tev:", round(t2_ev, 2), "\t<------------------- High EV" if t2_ev > 1.1 else  "")

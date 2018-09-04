@@ -10,10 +10,10 @@ function crawl() {
 
 function main() {
   compile
-  crawl "first blood"  "eu lcs" "bet365.csv" "fb"
-  crawl "first dragon" "eu lcs" "bet365.csv" "fd"
-  crawl "first tower"  "eu lcs" "bet365.csv" "ft"
-  crawl "first baron"  "eu lcs" "bet365.csv" "fbaron"
+  crawl "first blood"  "cblol" "bet365.csv" "fb"
+  crawl "first dragon" "cblol" "bet365.csv" "fd"
+  crawl "first tower"  "cblol" "bet365.csv" "ft"
+  crawl "first baron"  "cblol" "bet365.csv" "fbaron"
 }
 
 main

@@ -10,23 +10,13 @@ from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
 df = load_and_clean_data()
-stats = ['fb', 'ft', 'fd', 'fbaron']
-fig, ax = plt.subplots(nrows=2, ncols=2)
-i = 0
+team = 'fnatic'
+team_games = team_games(df, team)
+opponents = opponent_games(df, team, team_games.gameid)
 
-for row in ax:
-    for col in row:
-        for team in ['team liquid', '100 thieves']:
-            col.set_title(stats[i] + "%")
-            [total_games, chance] = running_first_stat(df, team, stats[i])
-            col.plot(np.arange(1, total_games+1), chance, label=team)
+result = team_games.merge(opponents, on="gameid")[['week', 'team', 'opponent', 'fb', 'ft', 'fd', 'fbaron', 'result']] 
 
-        i+=1
-
-plt.ylim(0, 105)
-plt.legend()
-fig.tight_layout()
-plt.show()
+print(result)
 
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',
