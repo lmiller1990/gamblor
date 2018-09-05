@@ -1,3 +1,9 @@
+adc = Position.create!(name: 'ADC')
+support = Position.create!(name: 'Support')
+jungle = Position.create!(name: 'Jungle')
+top = Position.create!(name: 'Top')
+middle = Position.create!(name: 'Middle')
+
 Team.create!(name: 'Cloud 9')
 Team.create!(name: 'Team Solomid')
 Team.create!(name: '100 Thieves')
@@ -12,4 +18,7 @@ Game.create!(
   date: DateTime.now
 )
 
-Player.create!(name: "Doublelift")
+Player.create!(
+  name: "Doublelift",
+  position_id: adc.id
+)
