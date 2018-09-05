@@ -11,3 +11,5 @@ Game.create!(
   first_turret_team_id: Team.second.id,
   date: DateTime.now
 )
+
+Player.create!(name: "Doublelift")
