@@ -8,7 +8,11 @@ module Api
       def show
         team = Team.find(params[:id])
 
-        render json: { team: team, games: team.games }
+        render json: { 
+          team: team, 
+          games: team.games,
+          players: team.players
+        }
       end
     end
   end

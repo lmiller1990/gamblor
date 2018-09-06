@@ -22,6 +22,7 @@ class GamesController < ApplicationController
 
   def edit
     @teams_for_select = @game.teams.collect {|t| [ t.name, t.id ] }
+    @players_for_select = @game.teams.first.players.collect {|t| [ t.name, t.id ] }
   end
 
   def update

@@ -3,13 +3,16 @@
   <%= f.date_field :date, value: Date.today %>
 
   <%= f.label :blue_side %>
-  <%= f.select :blue_side_team_id, @teams_for_select %>
+  <%= f.select :blue_side_team_id, @teams_for_select, {}, { class: 'side_select' } %>
 
   <%= f.label :red_side %>
-  <%= f.select :red_side_team_id, @teams_for_select %>
+  <%= f.select :red_side_team_id, @teams_for_select, {}, { class: 'side_select' } %>
 
   <%= f.label :first_blood_team_id %>
   <%= f.select :first_blood_team_id, @teams_for_select %>
+
+  <%= f.label :first_blood_player_id %>
+  <%= f.select :first_blood_player_id, @players_for_select %>
 
   <%= f.label :first_turret_team_id %>
   <%= f.select :first_turret_team_id, @teams_for_select %>

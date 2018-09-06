@@ -8161,3 +8161,222 @@ Completed 200 OK in 1559ms (Views: 1548.2ms | ActiveRecord: 1.1ms)
   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "games"[0m
+Processing by Api::V1::GamesController#create as HTML
+  Parameters: {"game"=>{"blue_side_team_id"=>"2", "date"=>"2018-09-06T13:23:57+09:00", "red_side_team_id"=>"1"}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (6.4ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["date", "2018-09-06 04:23:57"], ["created_at", "2018-09-06 04:23:57.316787"], ["updated_at", "2018-09-06 04:23:57.316787"], ["red_side_team_id", 1], ["blue_side_team_id", 2]]
+  [1m[35m (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for Api::V1::GamesController#create, rendering head :no_content
+Completed 204 No Content in 72ms (ActiveRecord: 14.5ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "games"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "clg"], ["created_at", "2018-09-06 04:23:57.389193"], ["updated_at", "2018-09-06 04:23:57.389193"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "clg"], ["created_at", "2018-09-06 04:23:57.392588"], ["updated_at", "2018-09-06 04:23:57.392588"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.394940"], ["updated_at", "2018-09-06 04:23:57.394940"], ["winner_id", 85], ["loser_id", 1], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.397110"], ["updated_at", "2018-09-06 04:23:57.397110"], ["winner_id", 1], ["loser_id", 85], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::TeamsController#show as HTML
+  Parameters: {"id"=>"85"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 85], ["loser_id", 85]]
+Completed 200 OK in 9ms (Views: 2.6ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "clg"], ["created_at", "2018-09-06 04:23:57.414391"], ["updated_at", "2018-09-06 04:23:57.414391"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "clg"], ["created_at", "2018-09-06 04:23:57.416707"], ["updated_at", "2018-09-06 04:23:57.416707"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.418522"], ["updated_at", "2018-09-06 04:23:57.418522"], ["winner_id", 87], ["loser_id", 1], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.420600"], ["updated_at", "2018-09-06 04:23:57.420600"], ["winner_id", 1], ["loser_id", 87], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::TeamsController#index as HTML
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by AppController#index as HTML
+  Rendering app/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered app/index.html.erb within layouts/application (0.7ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 26ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.8ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.459290"], ["updated_at", "2018-09-06 04:23:57.459290"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.462984"], ["updated_at", "2018-09-06 04:23:57.462984"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.465480"], ["updated_at", "2018-09-06 04:23:57.465480"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.470587"], ["updated_at", "2018-09-06 04:23:57.470587"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.472976"], ["updated_at", "2018-09-06 04:23:57.472976"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.6ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.477113"], ["updated_at", "2018-09-06 04:23:57.477113"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.482635"], ["updated_at", "2018-09-06 04:23:57.482635"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.485408"], ["updated_at", "2018-09-06 04:23:57.485408"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.488977"], ["updated_at", "2018-09-06 04:23:57.488977"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.496002"], ["updated_at", "2018-09-06 04:23:57.496002"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.498531"], ["updated_at", "2018-09-06 04:23:57.498531"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.502558"], ["updated_at", "2018-09-06 04:23:57.502558"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.510440"], ["updated_at", "2018-09-06 04:23:57.510440"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.513829"], ["updated_at", "2018-09-06 04:23:57.513829"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.518075"], ["updated_at", "2018-09-06 04:23:57.518075"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.7ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.525125"], ["updated_at", "2018-09-06 04:23:57.525125"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.529234"], ["updated_at", "2018-09-06 04:23:57.529234"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.533310"], ["updated_at", "2018-09-06 04:23:57.533310"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.6ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.540749"], ["updated_at", "2018-09-06 04:23:57.540749"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.545345"], ["updated_at", "2018-09-06 04:23:57.545345"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.550259"], ["updated_at", "2018-09-06 04:23:57.550259"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.556244"], ["updated_at", "2018-09-06 04:23:57.556244"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.559574"], ["updated_at", "2018-09-06 04:23:57.559574"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.565164"], ["updated_at", "2018-09-06 04:23:57.565164"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.570622"], ["updated_at", "2018-09-06 04:23:57.570622"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.574261"], ["updated_at", "2018-09-06 04:23:57.574261"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("first_blood_team_id", "first_turret_team_id", "date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id", "first_baron_team_id", "first_dragon_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_blood_team_id", 1], ["first_turret_team_id", 1], ["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.579974"], ["updated_at", "2018-09-06 04:23:57.579974"], ["winner_id", 2], ["loser_id", 1], ["red_side_team_id", 1], ["blue_side_team_id", 2], ["first_baron_team_id", 1], ["first_dragon_team_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "tsm"], ["created_at", "2018-09-06 04:23:57.587769"], ["updated_at", "2018-09-06 04:23:57.587769"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "c9"], ["created_at", "2018-09-06 04:23:57.590174"], ["updated_at", "2018-09-06 04:23:57.590174"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPosition Create (0.6ms)[0m  [1m[32mINSERT INTO "positions" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "adc"], ["created_at", "2018-09-06 04:23:57.613717"], ["updated_at", "2018-09-06 04:23:57.613717"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlayer Create (1.0ms)[0m  [1m[32mINSERT INTO "players" ("name", "created_at", "updated_at", "position_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sneaky"], ["created_at", "2018-09-06 04:23:57.634488"], ["updated_at", "2018-09-06 04:23:57.634488"], ["position_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContract Create (0.7ms)[0m  [1m[32mINSERT INTO "contracts" ("player_id", "team_id", "created_at", "updated_at", "start") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["player_id", 15], ["team_id", 89], ["created_at", "2018-09-06 04:23:57.654446"], ["updated_at", "2018-09-06 04:23:57.654446"], ["start", "2017-09-06 04:23:57.637551"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContract Create (0.4ms)[0m  [1m[32mINSERT INTO "contracts" ("player_id", "team_id", "created_at", "updated_at", "start") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["player_id", 15], ["team_id", 90], ["created_at", "2018-09-06 04:23:57.657281"], ["updated_at", "2018-09-06 04:23:57.657281"], ["start", "2018-09-05 04:23:57.656390"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mContract Load (0.7ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."player_id" = $1 ORDER BY "contracts"."start" DESC LIMIT $2[0m  [["player_id", 15], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.673045"], ["updated_at", "2018-09-06 04:23:57.673045"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.675092"], ["updated_at", "2018-09-06 04:23:57.675092"], ["winner_id", 1], ["loser_id", 1], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.677151"], ["updated_at", "2018-09-06 04:23:57.677151"], ["winner_id", 1], ["loser_id", 1], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE ("games"."winner_id" = $1 OR "games"."loser_id" = $2)[0m  [["winner_id", 1], ["loser_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.8ms)[0m  [1m[32mINSERT INTO "games" ("date", "created_at", "updated_at", "winner_id", "loser_id", "red_side_team_id", "blue_side_team_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2018-09-06 04:23:56.717114"], ["created_at", "2018-09-06 04:23:57.778468"], ["updated_at", "2018-09-06 04:23:57.778468"], ["winner_id", 1], ["loser_id", 1], ["red_side_team_id", 2], ["blue_side_team_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.6ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 2], ["name", "tsm"], ["created_at", "2018-09-06 04:23:57.782543"], ["updated_at", "2018-09-06 04:23:57.782543"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["id", 1], ["name", "cloud 9"], ["created_at", "2018-09-06 04:23:57.785740"], ["updated_at", "2018-09-06 04:23:57.785740"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/games" for 127.0.0.1 at 2018-09-06 13:23:57 +0900
+Processing by GamesController#index as HTML
+  Rendering games/index.html.erb within layouts/application
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."date" ASC[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered games/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 2055ms (Views: 2030.0ms | ActiveRecord: 1.2ms)
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
