@@ -4,9 +4,9 @@ jungle = Position.create!(name: 'Jungle')
 top = Position.create!(name: 'Top')
 middle = Position.create!(name: 'Middle')
 
-Team.create!(name: 'Cloud 9')
-Team.create!(name: 'Team Solomid')
-Team.create!(name: '100 Thieves')
+c9 = Team.create!(name: 'Cloud 9')
+tsm = Team.create!(name: 'Team Solomid')
+thieves = Team.create!(name: '100 Thieves')
 
 Game.create!(
   winner_id: Team.first.id, 
@@ -18,7 +18,16 @@ Game.create!(
   date: DateTime.now
 )
 
-Player.create!(
+doublelift = Player.create!(
   name: "Doublelift",
   position_id: adc.id
 )
+
+sneaky = Player.create!(
+  name: "Sneaky",
+  position_id: adc.id
+)
+
+Contract.create!(player: sneaky, team: c9, start: 3.year.ago)
+Contract.create!(player: doublelift, team: tsm, start: 1.year.ago)
+Contract.create!(player: doublelift, team: c9, start: 2.years.ago, end: 1.year.ago)

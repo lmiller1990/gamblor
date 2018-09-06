@@ -10,4 +10,8 @@ describe Team do
       expect(team.games).to eq [victory, defeat]
     end
   end
+  
+  describe '#current_players' do
+    let!(:team) { create(:team) }
+  end
 end

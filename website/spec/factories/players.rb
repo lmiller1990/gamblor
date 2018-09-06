@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :player do
-    name "MyString"
+    name 'Sneaky'
+
   end
 end

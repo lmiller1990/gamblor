@@ -7,8 +7,8 @@ describe Api::V1::GamesController do
         post :create, params: {
           game: {
             date: DateTime.now,
-            winner_id: 1,
-            loser_id: 2
+            red_side_team_id: 1,
+            blue_side_team_id: 2
           }
         }
       }.to change(Game, :count).by 1

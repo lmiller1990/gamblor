@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
 
   resources :games
+  resources :players
 
   namespace :api do
     namespace :v1 do
