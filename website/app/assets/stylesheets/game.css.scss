@@ -3,3 +3,16 @@
     font-weight: bold;
   }
 }
+
+.game_edit {
+  .first_market {
+    margin: 5px 0;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      width: 105px;
+    }
+  }
+}
