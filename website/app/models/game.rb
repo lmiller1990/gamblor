@@ -34,4 +34,8 @@ class Game < ApplicationRecord
   def first_dragon_team
     Team.find first_dragon_team_id
   end
+
+  def player_to_get_first(market)
+    Player.find(self["first_#{market}_player_id".to_sym])
+  end
 end

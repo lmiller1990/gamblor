@@ -1,8 +1,8 @@
 {
-  "application.js": "/packs/application-71cda99e7861f4e8c53b.js",
-  "application.js.map": "/packs/application-71cda99e7861f4e8c53b.js.map",
-  "games/show.js": "/packs/games/show-1c5599cb9bfd6856b0fb.js",
-  "games/show.js.map": "/packs/games/show-1c5599cb9bfd6856b0fb.js.map",
-  "hello_react.js": "/packs/hello_react-6396ff76cb796bdb8ea3.js",
-  "hello_react.js.map": "/packs/hello_react-6396ff76cb796bdb8ea3.js.map"
+  "application.js": "/packs/application-1390426eb7899854397c.js",
+  "application.js.map": "/packs/application-1390426eb7899854397c.js.map",
+  "games/edit.js": "/packs/games/edit-c93ce4bc8ea9161795ef.js",
+  "games/edit.js.map": "/packs/games/edit-c93ce4bc8ea9161795ef.js.map",
+  "hello_react.js": "/packs/hello_react-33e9e1af350ae29f1f5f.js",
+  "hello_react.js.map": "/packs/hello_react-33e9e1af350ae29f1f5f.js.map"
 }

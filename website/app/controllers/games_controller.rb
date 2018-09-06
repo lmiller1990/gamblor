@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update]
+  before_action :set_teams, only: [:show, :edit, :update]
 
   def index
     @games = Game.all.order(date: :asc)
@@ -7,7 +8,6 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @teams_for_select = Team.all.collect {|t| [ t.name, t.id ] }
   end
 
   def show
@@ -21,7 +21,6 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @teams_for_select = @game.teams.collect {|t| [ t.name, t.id ] }
     @players_for_select = @game.teams.first.players.collect {|t| [ t.name, t.id ] }
   end
 
@@ -48,11 +47,17 @@ class GamesController < ApplicationController
     params.require(:game).permit(
       :blue_side_team_id, :red_side_team_id, :date,
       :first_blood_team_id, :first_turret_team_id,
-      :first_baron_team_id, :first_dragon_team_id
+      :first_baron_team_id, :first_dragon_team_id,
+      :first_blood_player_id, :first_turret_player_id,
+      :first_baron_player_id, :first_dragon_player_id
     )
   end
 
   def set_game
     @game = Game.find(params[:id])
+  end
+
+  def set_teams
+    @teams_for_select = Team.all.collect {|t| [ t.name, t.id ] }
   end
 end

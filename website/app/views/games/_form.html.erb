@@ -8,21 +8,37 @@
   <%= f.label :red_side %>
   <%= f.select :red_side_team_id, @teams_for_select, {}, { class: 'side_select' } %>
 
+  <h3>First Blood</h3>
   <%= f.label :first_blood_team_id %>
-  <%= f.select :first_blood_team_id, @teams_for_select %>
+  <%= f.select :first_blood_team_id, @teams_for_select, {}, { class: 'first_select', data_select: 'first_blood' } %>
 
   <%= f.label :first_blood_player_id %>
-  <%= f.select :first_blood_player_id, @players_for_select %>
+  <%= f.select :first_blood_player_id, @players_for_select, {}, data_to_update: 'first_blood' %>
 
+  <h3>First Turret</h3>
   <%= f.label :first_turret_team_id %>
-  <%= f.select :first_turret_team_id, @teams_for_select %>
+  <%= f.select :first_turret_team_id, @teams_for_select, {}, { class: 'first_select', data_select: 'first_turret' } %>
 
+  <%= f.label :first_turret_player_id %>
+  <%= f.select :first_turret_player_id, @players_for_select, {}, data_to_update: 'first_turret' %>
+
+
+  <h3>First Dragon</h3>
   <%= f.label :first_dragon_team_id %>
-  <%= f.select :first_dragon_team_id, @teams_for_select %>
+  <%= f.select :first_dragon_team_id, @teams_for_select, {}, { class: 'first_select', data_select: 'first_dragon' } %>
 
+  <%= f.label :first_dragon_player_id %>
+  <%= f.select :first_dragon_player_id, @players_for_select, {}, data_to_update: 'first_dragon' %>
+
+
+  <h3>First Baron</h3>
   <%= f.label :first_baron_team_id %>
-  <%= f.select :first_baron_team_id, @teams_for_select %>
+  <%= f.select :first_baron_team_id, @teams_for_select, {}, { class: 'first_select', data_select: 'first_baron' } %>
 
+  <%= f.label :first_baron_player_id %>
+  <%= f.select :first_baron_player_id, @players_for_select, {}, { data_to_update: 'first_baron' } %>
+
+  <h3>Result</h3>
   <%= f.label :winner_id %>
   <%= f.select :winner_id, @teams_for_select %>
 

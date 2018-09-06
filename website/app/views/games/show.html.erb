@@ -16,19 +16,19 @@
 </div>
 
 <div>
-  First blood: <%= @first_blood_team %>
+  First blood: <%= @first_blood_team %> (<%= @game.player_to_get_first('blood').name %>)
 </div>
 
 <div>
-  First turret: <%= @first_turret_team %>
+  First turret: <%= @first_turret_team %> (<%= @game.player_to_get_first('turret').name %>)
 </div>
 
 <div>
-  First dragon: <%= @first_dragon_team %>
+  First dragon: <%= @first_dragon_team %> (<%= @game.player_to_get_first('dragon').name %>)
 </div>
 
 <div>
-  First baron: <%= @first_baron_team %>
+  First baron: <%= @first_baron_team %> (<%= @game.player_to_get_first('baron').name %>)
 </div>
 
 <%= link_to 'Edit', edit_game_path(@game), method: :get %>
