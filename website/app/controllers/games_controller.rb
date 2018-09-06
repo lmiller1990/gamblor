@@ -36,16 +36,22 @@ class GamesController < ApplicationController
   # Get the correct list of players based on which team 
   # got the first blood/dragon
   def set_players_for_first
+    puts 'ok'
     Game::FIRST_MARKETS.each do |market|
       team_id =  @game["first_#{market}_team_id".to_sym]
 
       if team_id
-        players = Team.find(team_id).players
-        instance_variable_set(
-          "@players_for_first_#{market}", players.collect {|p| [ p.name, p.id ] } 
-        )
+        set_players_instance_variable(market, Team.find(team_id).players)
+      else 
+        set_players_instance_variable(market, @game.teams.first.players)
       end
     end
+  end
+
+  def set_players_instance_variable(market, players)
+    instance_variable_set(
+      "@players_for_first_#{market}", players.collect {|p| [ p.name, p.id ] } 
+    )
   end
 
   # Set the first team for each market dynamically 

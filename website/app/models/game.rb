@@ -31,10 +31,12 @@ class Game < ApplicationRecord
   end
 
   def first_team_to_get(market)
-    Team.find self["first_#{market}_team_id".to_sym]
+    id = self["first_#{market}_team_id"]
+    Team.find id if id
   end
 
   def player_to_get_first(market)
-    Player.find(self["first_#{market}_player_id".to_sym])
+    id = self["first_#{market}_player_id"]
+    Player.find id if id
   end
 end
