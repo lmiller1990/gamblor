@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
 df = load_and_clean_data()
-team = 'fnatic'
+team = 'cloud9'
 team_games = team_games(df, team)
 opponents = opponent_games(df, team, team_games.gameid)
 

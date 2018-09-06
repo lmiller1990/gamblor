@@ -30,20 +30,11 @@ describe Game do
     it { expect(game.red_side_team).to eq red_side_team }
   end
 
-  describe '#first_baron_team' do
-    it { expect(game.first_baron_team).to eq red_side_team }
-  end
-
-  describe '#first_dragon_team' do
-    it { expect(game.first_dragon_team).to eq red_side_team }
-  end
-
-  describe '#first_turret_team' do
-    it { expect(game.first_turret_team).to eq red_side_team }
-  end
-
-  describe '#first_blood_team' do
-    it { expect(game.first_blood_team).to eq red_side_team }
+  describe '#first_team_to_get' do
+    it { expect(game.first_team_to_get('dragon')).to eq red_side_team }
+    it { expect(game.first_team_to_get('baron')).to eq red_side_team }
+    it { expect(game.first_team_to_get('turret')).to eq red_side_team }
+    it { expect(game.first_team_to_get('blood')).to eq red_side_team }
   end
 
   describe '#teams' do

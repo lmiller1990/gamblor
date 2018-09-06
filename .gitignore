@@ -12,3 +12,5 @@ tmp/
 crawlers/all_markets.sh
 web/node_modules
 web/public/packs
+website/log/test.log
+website/log/development.log
