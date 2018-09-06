@@ -4,10 +4,9 @@
   }
 }
 
-.game_edit {
+%first_market {
   .first_market {
     margin: 5px 0;
-    width: 350px;
     display: flex;
     justify-content: space-between;
 
@@ -15,4 +14,14 @@
       width: 105px;
     }
   }
+}
+
+.game_edit {
+  width: 250px;
+  @extend %first_market;
+} 
+
+.game_new {
+  width: 200px;
+  @extend %first_market;
 }

@@ -25,6 +25,12 @@
     <%= f.select :first_blood_player_id, @players_for_first_blood, {}, data_to_update: 'first_blood' %>
   </div>
 
+  <div class="first_market">
+    <%= f.label :first_blood_time %>
+    <%= f.time_field :first_blood_time, { step: 1 } %>
+  </div>
+
+
   <h3>First Turret</h3>
   <div class="first_market">
     <%= f.label :first_turret_team_id %>
@@ -36,6 +42,10 @@
     <%= f.select :first_turret_player_id, @players_for_first_turret, {}, data_to_update: 'first_turret' %>
   </div>
 
+  <div class="first_market">
+    <%= f.label :first_turret_time %>
+    <%= f.time_field :first_turret_time, { step: 1 } %>
+  </div>
 
   <h3>First Dragon</h3>
   <div class="first_market">
@@ -48,6 +58,10 @@
     <%= f.select :first_dragon_player_id, @players_for_first_dragon, {}, data_to_update: 'first_dragon' %>
   </div>
 
+  <div class="first_market">
+    <%= f.label :first_dragon_time %>
+    <%= f.time_field :first_dragon_time, { step: 1 } %>
+  </div>
 
   <h3>First Baron</h3>
   <div class="first_market">
@@ -56,14 +70,15 @@
   </div>
 
   <div class="first_market">
+    <%= f.label :first_baron_player_id %>
+    <%= f.select :first_baron_player_id, @players_for_first_baron, {}, { data_to_update: 'first_baron' } %>
+  </div>
+
+  <div class="first_market">
     <%= f.label :first_baron_time %>
     <%= f.time_field :first_baron_time, { step: 1 } %>
   </div>
 
-  <div class="first_market">
-    <%= f.label :first_baron_player_id %>
-    <%= f.select :first_baron_player_id, @players_for_first_baron, {}, { data_to_update: 'first_baron' } %>
-  </div>
 
   <h3>Result</h3>
 
