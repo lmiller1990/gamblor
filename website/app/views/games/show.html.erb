@@ -16,19 +16,19 @@
 </div>
 
 <div>
-  First blood: <%= @game.first_team_to_get('blood').name %> (<%= @game.player_to_get_first('blood').name %>)
+  First blood (<%= gametime(@game.first_blood_time) %>): <%= @game.first_team_to_get('blood').name %> (<%= @game.player_to_get_first('blood').name %>)
 </div>
 
 <div>
-  First turret: <%= @game.first_team_to_get('turret').name %> (<%= @game.player_to_get_first('turret').name %>)
+  First turret (<%= gametime(@game.first_turret_time) %>): <%= @game.first_team_to_get('turret').name %> (<%= @game.player_to_get_first('turret').name %>)
 </div>
 
 <div>
-  First dragon: <%= @game.first_team_to_get('dragon').name %> (<%= @game.player_to_get_first('dragon').name %>)
+  First dragon (<%= gametime(@game.first_dragon_time) %>): <%= @game.first_team_to_get('dragon').name %> (<%= @game.player_to_get_first('dragon').name %>)
 </div>
 
 <div>
-  First baron: <%= @game.first_team_to_get('baron').name %> (<%= @game.player_to_get_first('baron').name %>)
+  First baron (<%= gametime(@game.first_baron_time) %>): <%= @game.first_team_to_get('baron').name %> (<%= @game.player_to_get_first('baron').name %>)
 </div>
 
 <%= link_to 'Edit', edit_game_path(@game), method: :get %>

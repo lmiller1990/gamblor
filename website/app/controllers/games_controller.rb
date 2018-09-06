@@ -65,7 +65,8 @@ class GamesController < ApplicationController
       :first_blood_team_id, :first_turret_team_id,
       :first_baron_team_id, :first_dragon_team_id,
       :first_blood_player_id, :first_turret_player_id,
-      :first_baron_player_id, :first_dragon_player_id
+      :first_baron_player_id, :first_dragon_player_id,
+      :first_baron_time
     )
   end
 
