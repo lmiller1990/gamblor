@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :games
   resources :players
+  resources :teams do
+    resources :games, only: [:index], controller: 'teams/games'
+  end
 
   namespace :api do
     namespace :v1 do
