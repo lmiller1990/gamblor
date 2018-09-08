@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "start": "node app/javascript/index.js"
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
