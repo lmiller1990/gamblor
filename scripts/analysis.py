@@ -10,14 +10,16 @@ from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
 df = load_and_clean_data()
-team = 'cloud9'
-team_games = team_games(df, team)
-opponents = opponent_games(df, team, team_games.gameid)
+def history(team):
+    games = team_games(df, team)
+    opponents = opponent_games(df, team, games.gameid)
 
-result = team_games.merge(opponents, on="gameid")[['week', 'team', 'opponent', 'fb', 'ft', 'fd', 'fbaron', 'result']] 
+    result = games.merge(opponents, on="gameid")[['date', 'side', 'team', 'opponent', 'fb', 'fbtime', 'ft', 'fttime', 'fd', 'result']] 
 
-print(result)
+    print(result.round(2))
 
+history('echo fox')
+history('clutch gaming')
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',
 #       'playerid', 'side', 'position', 'player', 'team', 'champion', 'ban1',
