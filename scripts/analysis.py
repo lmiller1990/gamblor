@@ -5,18 +5,78 @@ import data_utils
 from collections import OrderedDict
 import numpy as np
 from data_utils import load_and_clean_data, team_games, teams_by_league, games_by_league, opponent_games
-from sklearn.cross_validation import train_test_split
-from sklearn.linear_model import LinearRegression
+#from sklearn.cross_validation import train_test_split
+#from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
 df = load_and_clean_data()
-team = 'cloud9'
-team_games = team_games(df, team)
-opponents = opponent_games(df, team, team_games.gameid)
+team_market = 'tower'
+approx_total = 13.5
 
-result = team_games.merge(opponents, on="gameid")[['week', 'team', 'opponent', 'fb', 'ft', 'fd', 'fbaron', 'result']] 
+league_teams = ['gen.g', 'griffin'] # ['griffin', 'sk telecom t1', 'kingzone dragonx', 'gen.g']#teams_by_league(df, ['lck']).tolist()
 
-print(result)
+fields = ['team', 'opponent', 'team' + team_market + 'kills', 'opp' + team_market + 'kills', team_market + 'kills', 'above']
+
+team = 'griffin'
+league_teams.remove(team)
+top_teams = league_teams # ['gen.g' ] #, 'kingzone dragonx', 'sk telecom t1',] # 'afreeca freecs', 'hanwha life esports']
+
+games = team_games(df, team)
+opponents = opponent_games(df, team, games.gameid)
+games = games.merge(opponents, on="gameid")
+
+games = games[games['opponent'].isin(top_teams)]
+games[team_market + 'kills'] = games['team' + team_market + 'kills'] + games['opp' + team_market + 'kills']
+games['above'] = (games['team' + team_market + 'kills'] + games['opp' + team_market + 'kills'] > 12.5)
+
+games[fields].reset_index().to_csv("turrets.csv")
+print(games[fields])
+print('Games above 12.5 ' + team_market, games[games.above == True].shape)
+print('Games below 12.5 ' + team_market, games[games.above == False].shape)
+
+all_av_towers = []
+for the_team in top_teams + [team]:
+    av_towers = games[(games.team == the_team) | (games.opponent == the_team)][team_market + 'kills'].mean()
+    all_av_towers.append(av_towers)
+    print(the_team, av_towers)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+short_names = list(map(lambda x: x[:8], top_teams + [team]))
+
+plt.bar(short_names, all_av_towers)
+
+ax.set_yticks(np.arange(0,approx_total))
+ax.yaxis.grid()
+plt.xticks(rotation=approx_total)
+
+totals = []
+for i in ax.patches:
+    totals.append(i.get_height())
+
+# set individual bar lables using above list
+total = sum(totals)
+
+# set individual bar lables using above list
+for i in ax.patches:
+    # get_x pulls left or right; get_height pushes up or down
+    ax.text(i.get_x()-.03, i.get_height()+.5, \
+            str(round(i.get_height(), 2)), fontsize=8,
+                color='dimgrey')
+
+ax.tick_params(labelsize='small')
+
+plt.ylim([0, approx_total])
+plt.show()
+
+print(df.columns)
+#team = 'clutch gaming'
+#team_games = team_games(df, team)
+#
+#f_only = ['week', 'team', 'fbaron', 'opponent', 'result']
+#
+#print(result)
 
 #print(result.sort_values(by='wins', ascending=False))
 #(['gameid', 'url', 'league', 'split', 'date', 'week', 'game', 'patchno',

@@ -1,0 +1,554 @@
+<h2 id="exploring-new-markets">Exploring New Markets</h2>
+<p>Until recently, I have mainly focused on the &quot;first&quot; markets - first blood, first tower and so on. I prefer first blood and first tower - first dragon is not cnsistent, outside of a handful of teams and junglers (Team Liquid&#39;s Xmithie and Vitality&#39;s Kikis come to mind as junglers with very high first dragon secures). Betting on first baron is similar to betting on the winner of a game, since the correlation between securing the first baron and eventual victory is so high (around 70% of first barons lead to victories in NA/EU, and even higher in the LCK).</p>
+<p>I&#39;m looking to work on a new model for the &quot;total&quot; markets, namely &quot;total kills over/under&quot; and &quot;total towers over/under&quot;. </p>
+<p>I&#39;ll focus on the towers first. Some games are bloody, and some are not - there is no requirement for a number of kills to win or lose a game. When it comes to turrets, however, a certain number must be destroyed. The minimum is 5, but that&#39;s pretty uncommon. 10-15 is a more common amount. The next professional game is Gen.G vs Griffin in the LCK regional qualifiers, so let&#39;s take a look at the odds for that game.</p>
+<h2 id="the-data">The Data</h2>
+<p>Since we are in the regional playoffs, I only want to consider the teams around that level - so the top 6 teams. This removes the bias introduced by higher level teams stomping lower level ones, which leads to less towers taken in general. First the raw data:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>index</th>
+<th>team</th>
+<th>opponent</th>
+<th>teamtowerkills</th>
+<th>opptowerkills</th>
+<th>towerkills</th>
+<th>above</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>griffin</td>
+<td>hanwha life esports</td>
+<td>2.0</td>
+<td>10.0</td>
+<td>12.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>griffin</td>
+<td>hanwha life esports</td>
+<td>7.0</td>
+<td>7.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>griffin</td>
+<td>hanwha life esports</td>
+<td>11.0</td>
+<td>1.0</td>
+<td>12.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>12</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>13</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>8.0</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>14</td>
+<td>griffin</td>
+<td>kt rolster</td>
+<td>1.0</td>
+<td>8.0</td>
+<td>9.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15</td>
+<td>griffin</td>
+<td>kt rolster</td>
+<td>4.0</td>
+<td>10.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>7</td>
+<td>16</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>8.0</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>8</td>
+<td>17</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>11.0</td>
+<td>5.0</td>
+<td>16.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>9</td>
+<td>18</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>7.0</td>
+<td>1.0</td>
+<td>8.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>10</td>
+<td>19</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>11</td>
+<td>20</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>12</td>
+<td>21</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>0.0</td>
+<td>10.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>13</td>
+<td>22</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>14</td>
+<td>23</td>
+<td>griffin</td>
+<td>hanwha life esports</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>15</td>
+<td>24</td>
+<td>griffin</td>
+<td>hanwha life esports</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>16</td>
+<td>25</td>
+<td>griffin</td>
+<td>kt rolster</td>
+<td>7.0</td>
+<td>11.0</td>
+<td>18.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>17</td>
+<td>26</td>
+<td>griffin</td>
+<td>kt rolster</td>
+<td>9.0</td>
+<td>2.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>18</td>
+<td>27</td>
+<td>griffin</td>
+<td>kt rolster</td>
+<td>2.0</td>
+<td>11.0</td>
+<td>13.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>19</td>
+<td>28</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>9.0</td>
+<td>5.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>20</td>
+<td>29</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>11.0</td>
+<td>1.0</td>
+<td>12.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>21</td>
+<td>30</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>22</td>
+<td>31</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>17.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>23</td>
+<td>41</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>10.0</td>
+<td>5.0</td>
+<td>15.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>24</td>
+<td>42</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>3.0</td>
+<td>11.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>25</td>
+<td>43</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>2.0</td>
+<td>11.0</td>
+<td>13.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>26</td>
+<td>44</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>27</td>
+<td>45</td>
+<td>griffin</td>
+<td>afreeca freecs</td>
+<td>6.0</td>
+<td>7.0</td>
+<td>13.0</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Adding everything up, we get:</p>
+<p>Games above 12.5 towers: 11 (40%)<br>Games below 12.5 towers: 17 (60%)</p>
+<p>Or, 39% vs 61%. Out of those six teams, only four are present in the regional gauntlet: SKT, Griffin, Gen.G and Kingzone. Performing the same analysis again, only including those teams we end up with: </p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>index</th>
+<th>team</th>
+<th>opponent</th>
+<th>teamtowerkills</th>
+<th>opptowerkills</th>
+<th>towerkills</th>
+<th>above</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>10</td>
+<td>griffin</td>
+<td>sk telecom t1</td>
+<td>7.0</td>
+<td>10.0</td>
+<td>17.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>1</td>
+<td>11</td>
+<td>griffin</td>
+<td>sk telecom t1</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>13</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>8.0</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>18</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>7.0</td>
+<td>1.0</td>
+<td>8.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>19</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>6</td>
+<td>20</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>7</td>
+<td>28</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>9.0</td>
+<td>5.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>8</td>
+<td>29</td>
+<td>griffin</td>
+<td>kingzone dragonx</td>
+<td>11.0</td>
+<td>1.0</td>
+<td>12.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>9</td>
+<td>30</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>10</td>
+<td>31</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>17.0</td>
+<td>True</td>
+</tr>
+<tr>
+<td>11</td>
+<td>37</td>
+<td>griffin</td>
+<td>sk telecom t1</td>
+<td>9.0</td>
+<td>2.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>12</td>
+<td>38</td>
+<td>griffin</td>
+<td>sk telecom t1</td>
+<td>8.0</td>
+<td>6.0</td>
+<td>14.0</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Games above 12.5 towers: 4/13 (30%)<br>Games below 12.5 towers: 9/13 (70%)</p>
+<p>The change is mainly due to excluding KT, who have a fairly high average tower kill count in their games.</p>
+<p>Different websites are offering different odds, but most are around:</p>
+<p>Over 12.5 turrets  - 2.1<br>Under 12.5 turrets - 1.66</p>
+<p>If we do the analysis once again, just with Gen.G and Griffin, we get:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>index</th>
+<th>team</th>
+<th>opponent</th>
+<th>teamtowerkills</th>
+<th>opptowerkills</th>
+<th>towerkills</th>
+<th>above</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>18</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>7.0</td>
+<td>1.0</td>
+<td>8.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>19</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>11.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>31</td>
+<td>griffin</td>
+<td>gen.g</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>17.0</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Games above 12.5 tower - 1/5 (20%)<br>Games below 12.5 tower - 4/5 (80%)</p>
+<p>4/5 chance looks good. This is a very small sample size, though. Still, this leaves us with:</p>
+<p>Top 6 teams: 60% below 12.5 towers (28 match sample)<br>The 4 teams in the regionals qualifier: 70% below 12.5 towers (13 match sample)<br>Gen.G vs Griffin: 80% (5 match sample)</p>
+<p>Coming back to the odds - 1.66 (under 12.5) vs 2.1 (over 12.5). The approx estimated values come out at:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">% chance below 12.5</th>
+<th style="text-align:center">Odds</th>
+<th>EV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">60%</td>
+<td style="text-align:center">1.66</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td style="text-align:right">70%</td>
+<td style="text-align:center">1.66</td>
+<td>1.16</td>
+</tr>
+<tr>
+<td style="text-align:right">80%</td>
+<td style="text-align:center">1.66</td>
+<td>1.32</td>
+</tr>
+</tbody>
+</table>
+<p>A more focused analysis can reveal more accurate odds that the bookeepers project. If we take the overall average towers for the whole league, we get:</p>
+<p>Games above 12.5 tower - 15/46 (32%) (EV 0.67)<br>Games below 12.5 tower - 31/46 (68%) (EV 1.12)</p>
