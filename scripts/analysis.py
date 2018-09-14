@@ -13,11 +13,11 @@ df = load_and_clean_data()
 team_market = 'tower'
 approx_total = 13.5
 
-league_teams = ['gen.g', 'griffin'] # ['griffin', 'sk telecom t1', 'kingzone dragonx', 'gen.g']#teams_by_league(df, ['lck']).tolist()
+league_teams = ['sk telecom t1', 'afreeca freecs'] # , 'sk telecom t1', 'kingzone dragonx', 'afreeca freecs']#teams_by_league(df, ['lck']).tolist()
 
 fields = ['team', 'opponent', 'team' + team_market + 'kills', 'opp' + team_market + 'kills', team_market + 'kills', 'above']
 
-team = 'griffin'
+team = 'sk telecom t1'
 league_teams.remove(team)
 top_teams = league_teams # ['gen.g' ] #, 'kingzone dragonx', 'sk telecom t1',] # 'afreeca freecs', 'hanwha life esports']
 
