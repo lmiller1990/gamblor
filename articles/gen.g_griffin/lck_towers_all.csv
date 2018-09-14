@@ -1,0 +1,28 @@
+,index,team,opponent,teamtowerkills,opptowerkills,towerkills,above
+0,0,griffin,hanwha life esports,2.0,10.0,12.0,False
+1,1,griffin,hanwha life esports,7.0,7.0,14.0,True
+2,2,griffin,hanwha life esports,11.0,1.0,12.0,False
+3,10,griffin,sk telecom t1,7.0,10.0,17.0,True
+4,11,griffin,sk telecom t1,9.0,1.0,10.0,False
+5,12,griffin,kingzone dragonx,9.0,1.0,10.0,False
+6,13,griffin,kingzone dragonx,8.0,1.0,9.0,False
+7,16,griffin,afreeca freecs,8.0,1.0,9.0,False
+8,17,griffin,afreeca freecs,11.0,5.0,16.0,True
+9,18,griffin,gen.g,7.0,1.0,8.0,False
+10,19,griffin,gen.g,1.0,10.0,11.0,False
+11,20,griffin,gen.g,11.0,0.0,11.0,False
+12,21,griffin,afreeca freecs,0.0,10.0,10.0,False
+13,22,griffin,afreeca freecs,1.0,10.0,11.0,False
+14,23,griffin,hanwha life esports,9.0,1.0,10.0,False
+15,24,griffin,hanwha life esports,11.0,0.0,11.0,False
+16,28,griffin,kingzone dragonx,9.0,5.0,14.0,True
+17,29,griffin,kingzone dragonx,11.0,1.0,12.0,False
+18,30,griffin,gen.g,1.0,9.0,10.0,False
+19,31,griffin,gen.g,6.0,11.0,17.0,True
+20,37,griffin,sk telecom t1,9.0,2.0,11.0,False
+21,38,griffin,sk telecom t1,8.0,6.0,14.0,True
+22,41,griffin,afreeca freecs,10.0,5.0,15.0,True
+23,42,griffin,afreeca freecs,3.0,11.0,14.0,True
+24,43,griffin,afreeca freecs,2.0,11.0,13.0,True
+25,44,griffin,afreeca freecs,11.0,0.0,11.0,False
+26,45,griffin,afreeca freecs,6.0,7.0,13.0,True
