@@ -9,26 +9,18 @@ from data_utils import load_and_clean_data, team_games, teams_by_league, games_b
 #from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
-df = load_and_clean_data()
+df = load_and_clean_data('tcl')
+df.rename(columns={'teamdeaths': 'oppkills'},inplace=True)
 
-def history(team):
-    games = team_games(df, team)
-    opponents = opponent_games(df, team, games.gameid)
 
-    result = games.merge(opponents, on="gameid")[['date', 'side', 'team', 'opponent', 'fb', 'fbtime', 'ft', 'fttime', 'fd', 'result']] 
-
-    print(result.round(2))
-
-team_market = 'tower'
+team_market = 'baron'
+team = 'royal bandits e-sports'
+threshold = 1.5 #12.5
 approx_total = 13.5
 
-league_teams = ['sk telecom t1', 'afreeca freecs'] # , 'sk telecom t1', 'kingzone dragonx', 'afreeca freecs']#teams_by_league(df, ['lck']).tolist()
+fields = ['team', 'opponent', 'team' + team_market + 'kills', 'opp' + team_market + 'kills', team_market + 'kills', 'above', 'result']
 
-fields = ['team', 'opponent', 'team' + team_market + 'kills', 'opp' + team_market + 'kills', team_market + 'kills', 'above']
-
-team = 'sk telecom t1'
-league_teams.remove(team)
-top_teams = league_teams # ['gen.g' ] #, 'kingzone dragonx', 'sk telecom t1',] # 'afreeca freecs', 'hanwha life esports']
+top_teams = ['supermassive'] #, 'fenerbahce esports', 'hwa gaming', 'dark passage']
 
 games = team_games(df, team)
 opponents = opponent_games(df, team, games.gameid)
@@ -36,12 +28,12 @@ games = games.merge(opponents, on="gameid")
 
 games = games[games['opponent'].isin(top_teams)]
 games[team_market + 'kills'] = games['team' + team_market + 'kills'] + games['opp' + team_market + 'kills']
-games['above'] = (games['team' + team_market + 'kills'] + games['opp' + team_market + 'kills'] > 12.5)
+games['above'] = (games['team' + team_market + 'kills'] + games['opp' + team_market + 'kills'] > threshold)
 
 games[fields].reset_index().to_csv("turrets.csv")
 print(games[fields])
-print('Games above 12.5 ' + team_market, games[games.above == True].shape)
-print('Games below 12.5 ' + team_market, games[games.above == False].shape)
+print('Games above ' + str(threshold) + ' ' + team_market, games[games.above == True].shape)
+print('Games below ' + str(threshold) + ' ' + team_market, games[games.above == False].shape)
 
 all_av_towers = []
 for the_team in top_teams + [team]:
@@ -77,9 +69,9 @@ for i in ax.patches:
 ax.tick_params(labelsize='small')
 
 plt.ylim([0, approx_total])
-plt.show()
+#plt.show()
 
-print(df.columns)
+#print(df.columns)
 #team = 'clutch gaming'
 #team_games = team_games(df, team)
 #

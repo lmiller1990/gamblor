@@ -1,6 +1,6 @@
 import sys
 import argparse
-from data_utils import load_and_clean_data
+from data_utils import load_and_clean_data, history
 from graphs import running_victories, running_first_stat, average_first_stat
 from common import get_first_chance, fetch_and_display_odds
 import matplotlib.pyplot as plt
@@ -11,16 +11,21 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--teams", help="teams to include in analysis")
 parser.add_argument("--markets", help="markets to include in analysis")
 parser.add_argument("--scripts", help="script to run")
+parser.add_argument("--exclude", help="teams to exlude from calcs", default='')
+parser.add_argument("--league", help="league to query by", default=None)
 parser.add_argument("--stats", 
         help='stat you are interested in. Avail: fb, ft, fd, fbaron',
-        default='fb,ft,fd,fbaron')
+        default='fb,fd,ft,fbaron')
 parser.add_argument("--past_games", help='past n games to get data for', default='-1,8,4')
 
 args = parser.parse_args()
 
-df = load_and_clean_data()
+df = load_and_clean_data(args.league)
+exclude = args.exclude.split(',')
+df = df[~df.opponent.isin(exclude)]
 
 if 'first_to_market' in args.scripts:
+
     for stat in args.stats.split(','):
         odds_csv = pd.read_csv('odds/' + stat +  '/bet365.csv')
         for i in range(odds_csv.shape[0]):
@@ -88,4 +93,9 @@ if 'first-running' in args.scripts:
     plt.legend()
     fig.tight_layout()
     plt.show()
+
+
+if 'history' in args.scripts:
+    for team in args.teams.split(','):
+        print(history(df, team))
 
