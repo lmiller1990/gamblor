@@ -1,3 +1,24 @@
+def get_first_chance_all_games(df, team, stat, unit):
+    """
+    Get average over all previous games
+    """
+    data = df[(df.team == team) & (df.player == 'Team')]
+    num_games = data.shape[0]
+
+    chance_over_all_games = []
+    for i in range(num_games):
+        num_and_chance = {}
+        games = data.tail(num_games - i)
+        got_first = games[games[stat] == unit]
+
+        num_and_chance['num_games'] = num_games - i
+        num_and_chance['chance'] = got_first.shape[0] / games.shape[0]
+        chance_over_all_games.append(num_and_chance)
+
+    return chance_over_all_games
+
+
+
 def get_first_chance(stat, unit, team, df, last_n_games=-1):
     """
     Get the chance of a 'first' occurrence, such as first blood, first dragon.
