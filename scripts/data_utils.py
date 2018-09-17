@@ -71,7 +71,7 @@ def opponent_games(df, team, gameids):
 
     return opponent_games
 
-def history(df, team):
+def history(df, team, opponent):
     """ 
     Returns game history for a team
 
@@ -80,10 +80,13 @@ def history(df, team):
     df: the dataframe
     team: team you are interested in
     """
-    games = team_games(df, team)
-    opponents = opponent_games(df, team, games.gameid)
+    if opponent:
+        games = df[(df.team == team) & (df.opponent == opponent)]#team_games(df, team)
+    else:
+        games = df[df.team == team]#team_games(df, team)
 
-    result = games.merge(opponents, on="gameid")[['team', 'opponent', 'fb', 'ft', 'fd', 'fbaron', 'teamkills', 'teamdeaths', 'teamtowerkills', 'opptowerkills', 'teamdragkills', 'oppdragkills', 'teambaronkills', 'oppbaronkills', 'result']] 
+    # result = games.merge(opponents, on="gameid")[['team', 'opponent', 'fb', 'ft', 'fd', 'fbaron', 'teamkills', 'teamdeaths', 'teamtowerkills', 'opptowerkills', 'teamdragkills', 'oppdragkills', 'teambaronkills', 'oppbaronkills', 'result']] 
+    result = games[['team', 'opponent', 'player', 'champion', 'fb', 'ft', 'result']]# , 'fd', 'fbaron', 'teamkills', 'teamdeaths', 'teamtowerkills', 'opptowerkills', 'teamdragkills', 'oppdragkills', 'teambaronkills', 'oppbaronkills', 'result']] 
 
     return result.round(2)
 

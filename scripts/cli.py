@@ -13,6 +13,7 @@ parser.add_argument("--markets", help="markets to include in analysis")
 parser.add_argument("--scripts", help="script to run")
 parser.add_argument("--exclude", help="teams to exlude from calcs", default='')
 parser.add_argument("--league", help="league to query by", default=None)
+parser.add_argument("--opponent", help="opponent for use with history", default=None)
 parser.add_argument("--stats", 
         help='stat you are interested in. Avail: fb, ft, fd, fbaron',
         default='fb,fd,ft,fbaron')
@@ -97,5 +98,5 @@ if 'first-running' in args.scripts:
 
 if 'history' in args.scripts:
     for team in args.teams.split(','):
-        print(history(df, team))
+        print(history(df, team, args.opponent))
 

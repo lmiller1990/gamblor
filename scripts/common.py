@@ -13,6 +13,7 @@ def get_first_chance_all_games(df, team, stat, unit):
 
         num_and_chance['num_games'] = num_games - i
         num_and_chance['chance'] = got_first.shape[0] / games.shape[0]
+        num_and_chance['week_game'] = str(games['week'].iloc[0]) + '-' + str(games['game'].iloc[0])
         chance_over_all_games.append(num_and_chance)
 
     return chance_over_all_games

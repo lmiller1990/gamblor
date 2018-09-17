@@ -15,6 +15,7 @@ args = parser.parse_args()
 df = load_and_clean_data(args.league)
 exclude = args.exclude.split(',')
 df = df[~df.opponent.isin(exclude)]
+print(df[['team', 'result', 'opponent']])
 
 html = ""
 
@@ -74,8 +75,12 @@ for stat in STATS:
             team_two_rel = (team_two_chance[i]['chance'] + (1 - team_one_chance[i]['chance'])) / 2
             team_one_ev = round(team_one_rel * team_one_odds, 2)
             team_two_ev = round(team_two_rel * team_two_odds, 2)
+
+            print(team_one, team_one_chance[i]['week_game']) 
+            print(team_two, team_two_chance[i+7]['week_game'])
+
             html += f"<tr>"
-            html += f"<td>{smallest-i}</td>"
+            html += f"<td>{team_one_chance[i]['week_game']} {team_two_chance[i]['week_game']}</td>"
             html += f"<td>{round(team_one_rel, 2)}</td>"
             html += f"<td>{round(team_two_rel, 2)}</td>"
             if team_one_ev > 1.1:
