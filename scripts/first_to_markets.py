@@ -13,7 +13,7 @@ first_to_stats = {
 
 evs_by_bookie = {}
 
-df = load_and_clean_data()
+df = load_and_clean_data('data.csv')
 for key in first_to_stats:
     csvs = os.listdir("odds/" + key)
 

@@ -1,7 +1,7 @@
 import pandas as pd
 from scripts.data_utils import load_and_clean_data, games_only
 
-df = load_and_clean_data()
+df = load_and_clean_data(data='data.csv')
 print(df.columns)
 
 df.to_csv("data_with_opponent.csv")

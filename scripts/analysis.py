@@ -9,7 +9,8 @@ from data_utils import load_and_clean_data, team_games, teams_by_league, games_b
 #from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
-df = load_and_clean_data('tcl')
+df = load_and_clean_data(data='small.csv', league='nalcs')
+"""
 df.rename(columns={'teamdeaths': 'oppkills'},inplace=True)
 
 
@@ -69,6 +70,7 @@ for i in ax.patches:
 ax.tick_params(labelsize='small')
 
 plt.ylim([0, approx_total])
+"""
 #plt.show()
 
 #print(df.columns)
