@@ -100,6 +100,7 @@ if 'first-running' in args.scripts:
 
 
 if 'history' in args.scripts:
+    df = load_and_clean_data(data=args.data, league=args.league, include_opponents=True)
     for team in args.teams.split(','):
         print(history(df, team, args.opponent))
 

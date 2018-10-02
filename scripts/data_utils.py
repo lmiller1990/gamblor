@@ -18,7 +18,6 @@ def get_opponents(df):
     opponents = []
     games = games_only(df)
     for idx, row in df.iterrows():
-        print(idx)
         op = games[(games.gameid == row.gameid) & (games.team != row.team)].team.values[0]
         opponents.append(op)
 
@@ -45,18 +44,18 @@ def team_games(df, team):
 def load_data(path, csv):
     return pd.read_csv(path + "/" + csv)
 
-def load_and_clean_data(data='data.csv', league=None):
+def load_and_clean_data(data='data.csv', league=None, include_opponents=False):
     df = pd.read_csv(data)
     df.team = df.team.str.lower()
     df.league = df.league.str.lower()
+    df.dropna(subset=['gameid'], inplace=True)
 
     if league:
         df = df[df.league == league]
 
-    df.dropna(subset=['gameid'], inplace=True)
-    df['opponent'] = get_opponents(df)
+    if include_opponents:
+        df['opponent'] = get_opponents(df)
 
-    print(df)
     return df.replace({ "1": 1.0, "0": 0.0, 1: 1.0, 0: 0.0, 'Blue': 0.0, 'Red': 1.0 })
 
 def opponent_games(df, team, gameids):
@@ -89,7 +88,11 @@ def history(df, team, opponent):
     else:
         games = df[df.team == team]#team_games(df, team)
 
-    result = games[['team', 'opponent', 'player', 'champion', 'fb', 'ft', 'result']]
+    games['dragkills'] = (games['teamdragkills'] + games['oppdragkills'])
+    games['turrkills'] = (games['teamtowerkills'] + games['opptowerkills'])
+    result = games[['team', 'opponent', 'player', 'champion', 'fb', 'fd', 'ft', 'fbaron', 'result', 'turrkills', 'dragkills', 'gamelength']]
+
+    result = result[result.player == 'Team'].sort_values('gamelength')
 
     return result.round(2)
 

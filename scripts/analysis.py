@@ -9,7 +9,21 @@ from data_utils import load_and_clean_data, team_games, teams_by_league, games_b
 #from sklearn.linear_model import LinearRegression
 from graphs import running_first_stat
 
-df = load_and_clean_data(data='small.csv', league='nalcs')
+fields = 'gamelength teamdragkills oppdragkills player team'.split(' ')
+df = load_and_clean_data(data='data.csv')[fields]
+df['avdrags'] = df.teamdragkills + df.oppdragkills
+df=df[df.player=='Team']
+
+df['over'] = df['avdrags'] > 3
+df.sort_values('gamelength', inplace=True)
+print(df)
+
+print('under', df[df.over == False].shape[0] / df.shape[0])
+print('over', df[df.over == True].shape[0] / df.shape[0])
+
+c=df[['avdrags', 'gamelength']]
+print(c.corr())
+
 """
 df.rename(columns={'teamdeaths': 'oppkills'},inplace=True)
 
