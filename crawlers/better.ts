@@ -51,6 +51,22 @@ function getTeams(el: HTMLElement) {
   return Array.from(el.querySelectorAll(".gl-Participant_Name"))
     .map((x: HTMLElement) => x.innerHTML)
 }
+/**
+ * @param el {HTMLElement} HTMLElement that looks like this:
+ * 
+ * <div class="cm-MarketSubGroup_Label ">Gambit Esports vs G-Rex - LOL - World Champs Play-In - Map 1</div>
+ * <div>........</div> <- this is the el param
+ * 
+ * So we want to get the team names from the previous element
+ * 
+ * @returns teams {Array<string} array containing the two teams
+ */
+function getTeamsForOverUnder(el: HTMLElement): Array<string> {
+  const tableHeader = el.previousElementSibling
+  const child = tableHeader.children[0] as HTMLElement 
+  const teams = child.innerText.split('- LOL')[0].split('vs')
+  return teams.map(x => x.toLowerCase().trim())
+}
 
 function getOdds(el: HTMLElement) {
   return Array.from(el.querySelectorAll(".gl-Participant_Odds"))
@@ -79,17 +95,21 @@ const main = (async function main() {
   await attachToWindow(page, 'theMarket', JSON.stringify(theMarket))
   await attachToWindow(page, 'theEvent', JSON.stringify(theEvent))
 
+  // console.log(theEvent, theMarket)
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
     const theLeague: HTMLElement = Array.from(divs)
       .filter((x: HTMLElement) => { 
         console.log(x.innerText, theEvent)
         if (x.innerText.toLowerCase().includes(theEvent)) {
+          console.log('found it', x)
           return x
         }
       })[0] as HTMLElement
 
+    // console.log("Finding for ", theEvent, theMarket) 
     // the table containing all the markets
     //
+    console.log(theLeague)
     const table: HTMLElement = theLeague.parentElement.parentElement
     const market = (Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
       .find(function (x: HTMLElement) : any { 
@@ -105,15 +125,17 @@ const main = (async function main() {
   await page.waitForSelector(".cm-CouponMarketGroupButton_Title")
   await attachToWindow(page, 'getTeams', getTeams)
   await attachToWindow(page, 'getOdds', getOdds)
+  await attachToWindow(page, 'getTeamsForOverUnder', getTeamsForOverUnder) 
 
   const matches: Match[] = await page.$eval(".gl-MarketGroup", (marketGroup) => {
     const results: Match[] = []
 
     const tableRows: Array<Element> = Array.from(marketGroup.querySelectorAll(".gl-Market_General"))
 
+    const teamGetter = theMarket.includes("total") ? getTeamsForOverUnder : getTeams
     for (const tableRow of tableRows) {
       Promise.all([
-        getTeams(tableRow as HTMLElement),
+        teamGetter(tableRow as HTMLElement), // getTeams(tableRow as HTMLElement),
         getOdds(tableRow as HTMLElement)
       ]).then(([ teams, odds ]) => {
         const match: Match = {

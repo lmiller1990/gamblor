@@ -63,6 +63,22 @@ function getTeams(el) {
     return Array.from(el.querySelectorAll(".gl-Participant_Name"))
         .map(function (x) { return x.innerHTML; });
 }
+/**
+ * @param el {HTMLElement} HTMLElement that looks like this:
+ *
+ * <div class="cm-MarketSubGroup_Label ">Gambit Esports vs G-Rex - LOL - World Champs Play-In - Map 1</div>
+ * <div>........</div> <- this is the el param
+ *
+ * So we want to get the team names from the previous element
+ *
+ * @returns teams {Array<string} array containing the two teams
+ */
+function getTeamsForOverUnder(el) {
+    var tableHeader = el.previousElementSibling;
+    var child = tableHeader.children[0];
+    var teams = child.innerText.split('- LOL')[0].split('vs');
+    return teams.map(function (x) { return x.toLowerCase().trim(); });
+}
 function getOdds(el) {
     return Array.from(el.querySelectorAll(".gl-Participant_Odds"))
         .map(function (x) { return x.innerHTML; });
@@ -109,19 +125,25 @@ var main = (function main() {
                     return [4 /*yield*/, attachToWindow(page, 'theMarket', JSON.stringify(theMarket))];
                 case 5:
                     _b.sent();
-                    return [4 /*yield*/, attachToWindow(page, 'theEvent', JSON.stringify(theEvent))];
+                    return [4 /*yield*/, attachToWindow(page, 'theEvent', JSON.stringify(theEvent))
+                        // console.log(theEvent, theMarket)
+                    ];
                 case 6:
                     _b.sent();
+                    // console.log(theEvent, theMarket)
                     return [4 /*yield*/, page.$$eval(".sm-MarketGroup_GroupName ", function (divs) {
                             var theLeague = Array.from(divs)
                                 .filter(function (x) {
                                 console.log(x.innerText, theEvent);
                                 if (x.innerText.toLowerCase().includes(theEvent)) {
+                                    console.log('found it', x);
                                     return x;
                                 }
                             })[0];
+                            // console.log("Finding for ", theEvent, theMarket) 
                             // the table containing all the markets
                             //
+                            console.log(theLeague);
                             var table = theLeague.parentElement.parentElement;
                             var market = Array.from(table.querySelectorAll(".sm-CouponLink_Label "))
                                 .find(function (x) {
@@ -131,6 +153,7 @@ var main = (function main() {
                             market.click();
                         })];
                 case 7:
+                    // console.log(theEvent, theMarket)
                     _b.sent();
                     return [4 /*yield*/, page.waitForSelector(".cm-CouponMarketGroupButton_Title")];
                 case 8:
@@ -141,13 +164,17 @@ var main = (function main() {
                     return [4 /*yield*/, attachToWindow(page, 'getOdds', getOdds)];
                 case 10:
                     _b.sent();
+                    return [4 /*yield*/, attachToWindow(page, 'getTeamsForOverUnder', getTeamsForOverUnder)];
+                case 11:
+                    _b.sent();
                     return [4 /*yield*/, page.$eval(".gl-MarketGroup", function (marketGroup) {
                             var results = [];
                             var tableRows = Array.from(marketGroup.querySelectorAll(".gl-Market_General"));
+                            var teamGetter = theMarket.includes("total") ? getTeamsForOverUnder : getTeams;
                             for (var _i = 0, tableRows_1 = tableRows; _i < tableRows_1.length; _i++) {
                                 var tableRow = tableRows_1[_i];
                                 Promise.all([
-                                    getTeams(tableRow),
+                                    teamGetter(tableRow),
                                     getOdds(tableRow)
                                 ]).then(function (_a) {
                                     var teams = _a[0], odds = _a[1];
@@ -162,14 +189,14 @@ var main = (function main() {
                             }
                             return results;
                         })];
-                case 11:
+                case 12:
                     matches = _b.sent();
                     for (_i = 0, _a = utils_1.removeDupMatches(matches); _i < _a.length; _i++) {
                         match = _a[_i];
                         fs.appendFileSync(path.join(__dirname, "..", "odds", outputDirectory, outputFile), "\n" + match.firstTeamName + "," + match.secondTeamName + "," + match.firstTeamOdds + "," + match.secondTeamOdds);
                     }
                     return [4 /*yield*/, browser.close()];
-                case 12:
+                case 13:
                     _b.sent();
                     return [2 /*return*/];
             }
