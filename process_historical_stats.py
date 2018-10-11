@@ -26,22 +26,28 @@ def simulate(df, market, amt_bet, on_favorite):
 
 def filter_by_teams(df, team): return df[(df.t1 == team) | (df.t2 == team)]
 
-#for market in ['fb', 'ft', 'fd', 'fbaron', 'win']:
-#    the_df = df  # filter_by_teams(df, team)
-#    print('games played', the_df.shape[0]/5)
-#    print(market)
-#    print('Bet on favorite     ', simulate(the_df, market, 10, True))
-#    print('Bet against favorite', simulate(the_df, market, 10, False))
+
+def overall():
+    for market in ['fb', 'ft', 'fd', 'fbaron', 'win']:
+        the_df = df  # filter_by_teams(df, team)
+        print('games played', the_df.shape[0]/5)
+        print(market)
+        print('Bet on favorite     ', simulate(the_df, market, 10, True))
+        print('Bet against favorite', simulate(the_df, market, 10, False))
+
 
 def by_teams(t1, t2):
     for market in ['fb', 'ft', 'fd', 'fbaron', 'win']:
         for team in [t1, t2]:
             print("\n", team)
             the_df = filter_by_teams(df, team)
+            #print(the_df)
             print('games played', the_df.shape[0]/5)
             print(market)
             print('Bet on favorite     ', simulate(the_df, market, 10, True))
             print('Bet against favorite', simulate(the_df, market, 10, False))
 
 
-by_teams('gambit esports', 'kaos latin gamers')
+by_teams('cloud9', 'gambit esports')
+
+#overall()

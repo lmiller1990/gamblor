@@ -97,9 +97,10 @@ const main = (async function main() {
 
   // console.log(theEvent, theMarket)
   await page.$$eval(".sm-MarketGroup_GroupName ", (divs) => {
+    console.log(divs.length)
     const theLeague: HTMLElement = Array.from(divs)
       .filter((x: HTMLElement) => { 
-        console.log(x.innerText, theEvent)
+        console.log('innertext', x.innerText, 'theEvent', theEvent)
         if (x.innerText.toLowerCase().includes(theEvent)) {
           console.log('found it', x)
           return x

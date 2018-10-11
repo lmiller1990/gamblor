@@ -10,15 +10,15 @@ function crawl() {
 
 function main() {
   compile
-  crawl "first blood"   "play-in" "bet365.csv" "fb"
-  crawl "first dragon"  "play-in" "bet365.csv" "fd"
-  crawl "first tower"   "play-in" "bet365.csv" "ft"
-  crawl "first baron"   "play-in" "bet365.csv" "fbaron"
-  crawl "total kills"   "play-in" "bet365.csv" "total_kills"
-  crawl "total dragons" "play-in" "bet365.csv" "total_dragons"
-  crawl "total barons"  "play-in" "bet365.csv" "total_barons"
-  crawl "total towers"  "play-in" "bet365.csv" "total_towers"
-  crawl "to win"        "play-in" "bet365.csv" "to_win"
+  crawl "first blood"   "champs" "bet365.csv" "fb"
+  crawl "first dragon"  "champs" "bet365.csv" "fd"
+  crawl "first tower"   "champs" "bet365.csv" "ft"
+  crawl "first baron"   "champs" "bet365.csv" "fbaron"
+  crawl "total kills"   "champs" "bet365.csv" "total_kills"
+  crawl "total dragons" "champs" "bet365.csv" "total_dragons"
+  crawl "total barons"  "champs" "bet365.csv" "total_barons"
+  crawl "total towers"  "champs" "bet365.csv" "total_towers"
+  crawl "to win"        "champs" "bet365.csv" "to_win"
 }
 
 main

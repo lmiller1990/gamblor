@@ -132,9 +132,10 @@ var main = (function main() {
                     _b.sent();
                     // console.log(theEvent, theMarket)
                     return [4 /*yield*/, page.$$eval(".sm-MarketGroup_GroupName ", function (divs) {
+                            console.log(divs.length);
                             var theLeague = Array.from(divs)
                                 .filter(function (x) {
-                                console.log(x.innerText, theEvent);
+                                console.log('innertext', x.innerText, 'theEvent', theEvent);
                                 if (x.innerText.toLowerCase().includes(theEvent)) {
                                     console.log('found it', x);
                                     return x;
