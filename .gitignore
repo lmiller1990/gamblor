@@ -7,7 +7,6 @@ scripts/__pycache__/
 node_modules/
 data.csv
 scripts/__pycache__
-odds/
 tmp/
 crawlers/all_markets.sh
 web/node_modules
